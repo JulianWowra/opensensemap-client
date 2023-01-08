@@ -26,6 +26,9 @@
 		"lint": "eslint src --ext .ts",
 		"prepack": "yarn build:lib"
 	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
 	"keywords": [
 		"opensensemap",
 		"open sense map"
