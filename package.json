@@ -22,7 +22,7 @@
 	"scripts": {
 		"build": "yarn build:lib && yarn build:docs",
 		"build:lib": "tsc",
-		"build:docs": "typedoc --out docs --entryPoints src/index.ts",
+		"build:docs": "typedoc --entryPoints src/index.ts --out docs --excludePrivate --customCss ./typedoc.css",
 		"lint": "eslint src --ext .ts",
 		"prepack": "yarn build:lib"
 	},
