@@ -21,13 +21,13 @@ import {
  * @see https://docs.opensensemap.org/#api-Boxes-getBox
  */
 export async function getBox(senseBoxId: string): Promise<BoxData> {
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
-		params: {
-			format: 'json'
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
+			params: {
+				format: 'json'
+			}
+		})
+	).data;
 }
 
 /**
@@ -46,17 +46,17 @@ export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise
 		options.exposure = options.exposure.join();
 	}
 
-	const r = await axios.get('https://api.opensensemap.org/boxes', {
-		params: Object.assign(
-			{
-				format: 'json',
-				bbox
-			},
-			options
-		)
-	});
-
-	return r.data;
+	return (
+		await axios.get('https://api.opensensemap.org/boxes', {
+			params: Object.assign(
+				{
+					format: 'json',
+					bbox
+				},
+				options
+			)
+		})
+	).data;
 }
 
 export type GetBoxesOptions = {
@@ -85,24 +85,24 @@ export async function postNewBox(
 	message: 'Box successfully created';
 	data: BoxData;
 }> {
-	const r = await axios.post(
-		'https://api.opensensemap.org/boxes',
-		Object.assign(
+	return (
+		await axios.post(
+			'https://api.opensensemap.org/boxes',
+			Object.assign(
+				{
+					name,
+					exposure,
+					location
+				},
+				options
+			),
 			{
-				name,
-				exposure,
-				location
-			},
-			options
-		),
-		{
-			headers: {
-				Authorization: `Bearer ${authorization}`
+				headers: {
+					Authorization: `Bearer ${authorization}`
+				}
 			}
-		}
-	);
-
-	return r.data;
+		)
+	).data;
 }
 
 export type PostNewBoxOptions = {
@@ -127,13 +127,13 @@ export async function updateBox(
 	code: 'Ok';
 	data: BoxData;
 }> {
-	const r = await axios.put(`https://api.opensensemap.org/boxes/${senseBoxId}`, options, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.put(`https://api.opensensemap.org/boxes/${senseBoxId}`, options, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		})
+	).data;
 }
 
 export type UpdateBoxOptions = {
@@ -159,49 +159,49 @@ export async function deleteBox(
 	code: 'Ok';
 	message: 'box and all associated measurements marked for deletion';
 }> {
-	const r = await axios.delete(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		},
-		data: {
-			password
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.delete(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			},
+			data: {
+				password
+			}
+		})
+	).data;
 }
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-claimBox
  */
 export async function claimBox(transferToken: string, authorization: string): Promise<{ message: 'Device successfully claimed!' }> {
-	const r = await axios.post(
-		'https://api.opensensemap.org/boxes/claim',
-		{
-			token: transferToken
-		},
-		{
-			headers: {
-				Authorization: `Bearer ${authorization}`
+	return (
+		await axios.post(
+			'https://api.opensensemap.org/boxes/claim',
+			{
+				token: transferToken
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${authorization}`
+				}
 			}
-		}
-	);
-
-	return r.data;
+		)
+	).data;
 }
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getSketch
  */
 export async function getSketch(senseBoxId: string, authorization: string, options?: GetSketchOptions): Promise<string> {
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/script`, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		},
-		params: options
-	});
-
-	return r.data;
+	return (
+		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/script`, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			},
+			params: options
+		})
+	).data;
 }
 
 export type GetSketchOptions = {
@@ -229,16 +229,16 @@ export async function getBoxLocations(senseBoxId: string, options?: GetBoxLocati
 		options['to-date'] = options['to-date'].toISOString();
 	}
 
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/locations`, {
-		params: Object.assign(
-			{
-				format: 'json'
-			},
-			options
-		)
-	});
-
-	return r.data;
+	return (
+		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/locations`, {
+			params: Object.assign(
+				{
+					format: 'json'
+				},
+				options
+			)
+		})
+	).data;
 }
 
 export type GetBoxLocationsOptions = {
@@ -255,13 +255,13 @@ export async function getTransfer(
 ): Promise<{
 	data: BoxTransferInformation;
 }> {
-	const r = await axios.get(`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.get(`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		})
+	).data;
 }
 
 /**
@@ -275,37 +275,37 @@ export async function createTransfer(
 	message: 'Box successfully prepared for transfer';
 	data: BoxTransferInformation;
 }> {
-	const r = await axios.post(
-		'https://api.opensensemap.org/boxes/transfer',
-		{
-			boxId: senseBoxId,
-			date: expiresAt
-		},
-		{
-			headers: {
-				Authorization: `Bearer ${authorization}`
+	return (
+		await axios.post(
+			'https://api.opensensemap.org/boxes/transfer',
+			{
+				boxId: senseBoxId,
+				date: expiresAt
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${authorization}`
+				}
 			}
-		}
-	);
-
-	return r.data;
+		)
+	).data;
 }
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-removeTransfer
  */
 export async function removeTransfer(senseBoxId: string, transferToken: string, authorization: string): Promise<''> {
-	const r = await axios.delete('https://api.opensensemap.org/boxes/transfer', {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		},
-		data: {
-			boxId: senseBoxId,
-			token: transferToken
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.delete('https://api.opensensemap.org/boxes/transfer', {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			},
+			data: {
+				boxId: senseBoxId,
+				token: transferToken
+			}
+		})
+	).data;
 }
 
 /**
@@ -320,20 +320,20 @@ export async function updateTransfer(
 	message: 'Transfer successfully updated';
 	data: BoxTransferInformation;
 }> {
-	const r = await axios.put(
-		`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`,
-		{
-			token: transferToken,
-			date: expiresAt
-		},
-		{
-			headers: {
-				Authorization: `Bearer ${authorization}`
+	return (
+		await axios.put(
+			`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`,
+			{
+				token: transferToken,
+				date: expiresAt
+			},
+			{
+				headers: {
+					Authorization: `Bearer ${authorization}`
+				}
 			}
-		}
-	);
-
-	return r.data;
+		)
+	).data;
 }
 
 export interface BoxData {

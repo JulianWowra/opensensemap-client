@@ -34,23 +34,23 @@ export async function descriptive(
 		options.exposure = options.exposure.join();
 	}
 
-	const r = await axios.get('https://api.opensensemap.org/statistics/descriptive', {
-		params: Object.assign(
-			{
-				boxId: boxId.join(),
-				bbox,
-				phenomenon,
-				'from-date': fromDate,
-				'to-date': toDate,
-				operation,
-				window,
-				format: 'json'
-			},
-			options
-		)
-	});
-
-	return r.data;
+	return (
+		await axios.get('https://api.opensensemap.org/statistics/descriptive', {
+			params: Object.assign(
+				{
+					boxId: boxId.join(),
+					bbox,
+					phenomenon,
+					'from-date': fromDate,
+					'to-date': toDate,
+					operation,
+					window,
+					format: 'json'
+				},
+				options
+			)
+		})
+	).data;
 }
 
 export type DescriptiveOptions = {

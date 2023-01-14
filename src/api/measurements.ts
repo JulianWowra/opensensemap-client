@@ -19,20 +19,20 @@ export async function postNewMeasurement(
 		options.createdAt = options.createdAt.toISOString();
 	}
 
-	const r = await axios.post(
-		`https://api.opensensemap.org/boxes/${senseBoxId}/${sensorId}`,
-		Object.assign(
+	return (
+		await axios.post(
+			`https://api.opensensemap.org/boxes/${senseBoxId}/${sensorId}`,
+			Object.assign(
+				{
+					value: typeof value === 'string' ? value : value.toString()
+				},
+				options
+			),
 			{
-				value: typeof value === 'string' ? value : value.toString()
-			},
-			options
-		),
-		{
-			headers: authorization ? { Authorization: authorization } : {}
-		}
-	);
-
-	return r.data;
+				headers: authorization ? { Authorization: authorization } : {}
+			}
+		)
+	).data;
 }
 
 export type PostNewMeasurementOptions = {
@@ -62,11 +62,11 @@ export async function getData(
 		options['to-date'] = options['to-date'].toISOString();
 	}
 
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/data/${sensorId}`, {
-		params: Object.assign({ format: 'json' }, options)
-	});
-
-	return r.data;
+	return (
+		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/data/${sensorId}`, {
+			params: Object.assign({ format: 'json' }, options)
+		})
+	).data;
 }
 
 export type GetDataOptions = {
@@ -103,14 +103,14 @@ export async function deleteMeasurements(
 		});
 	}
 
-	const r = await axios.delete(`https://api.opensensemap.org/boxes/${senseBoxId}/${sensorId}/measurements`, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		},
-		data: options
-	});
-
-	return r.data;
+	return (
+		await axios.delete(`https://api.opensensemap.org/boxes/${senseBoxId}/${sensorId}/measurements`, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			},
+			data: options
+		})
+	).data;
 }
 
 export type DeleteMeasurementsOptions = {
@@ -132,13 +132,13 @@ export async function getDataByGroupTag(grouptag: string | string[]): Promise<
 	}[]
 > {
 	try {
-		const r = await axios.get('https://api.opensensemap.org/boxes/data/bytag', {
-			params: {
-				grouptag: Array.isArray(grouptag) ? grouptag.join() : grouptag
-			}
-		});
-
-		return r.data;
+		return (
+			await axios.get('https://api.opensensemap.org/boxes/data/bytag', {
+				params: {
+					grouptag: Array.isArray(grouptag) ? grouptag.join() : grouptag
+				}
+			})
+		).data;
 	} catch (error) {
 		if (axios.isAxiosError(error) && error.response?.status === 404 && error.response.data?.message === 'No senseBoxes found') {
 			return [];
@@ -181,19 +181,19 @@ export async function getDataMulti(
 		options.exposure = options.exposure.join();
 	}
 
-	const r = await axios.get('https://api.opensensemap.org/boxes/data', {
-		params: Object.assign(
-			{
-				format: 'json',
-				boxId: boxId?.join(),
-				bbox,
-				phenomenon
-			},
-			options
-		)
-	});
-
-	return r.data;
+	return (
+		await axios.get('https://api.opensensemap.org/boxes/data', {
+			params: Object.assign(
+				{
+					format: 'json',
+					boxId: boxId?.join(),
+					bbox,
+					phenomenon
+				},
+				options
+			)
+		})
+	).data;
 }
 
 export type GetDataMultiOptions = {
@@ -213,9 +213,7 @@ export async function getLatestMeasurements(
 	_id: string;
 	sensors: GetLatestMeasurement[];
 }> {
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors`, { params: options });
-
-	return r.data;
+	return (await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors`, { params: options })).data;
 }
 
 export type GetLatestMeasurementsOptions = {
@@ -230,9 +228,7 @@ export async function getLatestMeasurementOfSensor(
 	sensorId: string,
 	options?: GetLatestMeasurementOfSensorOptions
 ): Promise<GetLatestMeasurement | string> {
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors/${sensorId}`, { params: options });
-
-	return r.data;
+	return (await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors/${sensorId}`, { params: options })).data;
 }
 
 export type GetLatestMeasurementOfSensorOptions = {
@@ -259,11 +255,11 @@ export async function postNewMeasurements(
 		return element;
 	});
 
-	const r = await axios.post(`https://api.opensensemap.org/boxes/${senseBoxId}/data`, data, {
-		headers: authorization ? { Authorization: authorization } : {}
-	});
-
-	return r.data;
+	return (
+		await axios.post(`https://api.opensensemap.org/boxes/${senseBoxId}/data`, data, {
+			headers: authorization ? { Authorization: authorization } : {}
+		})
+	).data;
 }
 
 export type PostNewMeasurementsData = {
