@@ -148,7 +148,7 @@ start();
   - [reset password with passwordResetToken](https://docs.opensensemap.org/#api-Users-password_reset)
     - _Function:_ [`.passwordReset()`](https://killerjulian.github.io/opensensemap-client/functions/passwordReset.html)
 
-You can find more information in the [full documentaion](https://killerjulian.github.io/opensensemap-client/).
+You can find more information in the [full documentation](https://killerjulian.github.io/opensensemap-client/).
 
 ---
 
