@@ -113,6 +113,7 @@ export type PostNewBoxOptions = {
 	mqtt?: MQTT;
 	ttn?: TTN;
 	useAuth?: boolean;
+	sharedBox?: boolean;
 };
 
 /**
@@ -166,6 +167,25 @@ export async function deleteBox(
 			password
 		}
 	});
+
+	return r.data;
+}
+
+/**
+ * @see https://docs.opensensemap.org/#api-Boxes-claimBox
+ */
+export async function claimBox(transferToken: string, authorization: string): Promise<{ message: 'Device successfully claimed!' }> {
+	const r = await axios.post(
+		'https://api.opensensemap.org/boxes/claim',
+		{
+			token: transferToken
+		},
+		{
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		}
+	);
 
 	return r.data;
 }
@@ -226,6 +246,96 @@ export type GetBoxLocationsOptions = {
 	'to-date': RFC3339Date | Date;
 };
 
+/**
+ * @see https://docs.opensensemap.org/#api-Boxes-getTransfer
+ */
+export async function getTransfer(
+	senseBoxId: string,
+	authorization: string
+): Promise<{
+	data: BoxTransferInformation;
+}> {
+	const r = await axios.get(`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`, {
+		headers: {
+			Authorization: `Bearer ${authorization}`
+		}
+	});
+
+	return r.data;
+}
+
+/**
+ * @see https://docs.opensensemap.org/#api-Boxes-createTransfer
+ */
+export async function createTransfer(
+	senseBoxId: string,
+	expiresAt: RFC3339Date,
+	authorization: string
+): Promise<{
+	message: 'Box successfully prepared for transfer';
+	data: BoxTransferInformation;
+}> {
+	const r = await axios.post(
+		'https://api.opensensemap.org/boxes/transfer',
+		{
+			boxId: senseBoxId,
+			date: expiresAt
+		},
+		{
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		}
+	);
+
+	return r.data;
+}
+
+/**
+ * @see https://docs.opensensemap.org/#api-Boxes-removeTransfer
+ */
+export async function removeTransfer(senseBoxId: string, transferToken: string, authorization: string): Promise<''> {
+	const r = await axios.delete('https://api.opensensemap.org/boxes/transfer', {
+		headers: {
+			Authorization: `Bearer ${authorization}`
+		},
+		data: {
+			boxId: senseBoxId,
+			token: transferToken
+		}
+	});
+
+	return r.data;
+}
+
+/**
+ * @see https://docs.opensensemap.org/#api-Boxes-updateTransfer
+ */
+export async function updateTransfer(
+	senseBoxId: string,
+	transferToken: string,
+	expiresAt: RFC3339Date,
+	authorization: string
+): Promise<{
+	message: 'Transfer successfully updated';
+	data: BoxTransferInformation;
+}> {
+	const r = await axios.put(
+		`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`,
+		{
+			token: transferToken,
+			date: expiresAt
+		},
+		{
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		}
+	);
+
+	return r.data;
+}
+
 export interface BoxData {
 	_id: string;
 	name: string;
@@ -239,7 +349,7 @@ export interface BoxData {
 	currentLocation: BoxCurrentLocation;
 	updatedAt: RFC3339Date;
 	sensors: BoxSensors[];
-	loc?: {
+	loc: {
 		geometry: {
 			timestamp: RFC3339Date;
 			coordinates: Location;
@@ -248,7 +358,7 @@ export interface BoxData {
 		type: string;
 	}[];
 	lastMeasurementAt?: RFC3339Date;
-	integrations?: { mqtt: MQTT | { enabled: false }; ttn?: TTN };
+	integrations: { mqtt: MQTT | { enabled: false }; ttn?: TTN };
 	access_token?: string;
 	useAuth?: boolean;
 }
@@ -271,4 +381,13 @@ export interface BoxCurrentLocation {
 	coordinates: Location;
 	type: string;
 	timestamp: RFC3339Date;
+}
+
+export interface BoxTransferInformation {
+	_id: string;
+	boxId: string;
+	token: string;
+	createdAt: RFC3339Date;
+	updatedAt: RFC3339Date;
+	expiresAt: RFC3339Date;
 }

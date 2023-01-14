@@ -164,7 +164,7 @@ export async function updateUser(
 
 export type UpdateUserOptions = {
 	email?: string;
-	language?: string;
+	language?: 'en_US' | 'de_DE';
 	name?: string;
 	newPassword?: string;
 };
@@ -190,12 +190,7 @@ export async function confirmEmail(
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUserBoxes
  */
-export async function getUserBoxes(authorization: string): Promise<{
-	code: 'Ok';
-	data: {
-		boxes: BoxData[];
-	};
-}> {
+export async function getUserBoxes(authorization: string): Promise<{ code: 'Ok'; data: { boxes: BoxData[]; sharedBoxes: BoxData[] } }> {
 	const r = await axios.get('https://api.opensensemap.org/users/me/boxes', {
 		headers: {
 			Authorization: `Bearer ${authorization}`

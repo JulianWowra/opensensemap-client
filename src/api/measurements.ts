@@ -121,6 +121,34 @@ export type DeleteMeasurementsOptions = {
 };
 
 /**
+ * @see https://docs.opensensemap.org/#api-Measurements-getDataByGroupTag
+ */
+export async function getDataByGroupTag(grouptag: string | string[]): Promise<
+	{
+		boxId: string;
+		sensorId: string;
+		value: string;
+		createdAt: string;
+	}[]
+> {
+	try {
+		const r = await axios.get('https://api.opensensemap.org/boxes/data/bytag', {
+			params: {
+				grouptag: Array.isArray(grouptag) ? grouptag.join() : grouptag
+			}
+		});
+
+		return r.data;
+	} catch (error) {
+		if (axios.isAxiosError(error) && error.response?.status === 404 && error.response.data?.message === 'No senseBoxes found') {
+			return [];
+		}
+
+		throw error;
+	}
+}
+
+/**
  * @see https://docs.opensensemap.org/#api-Measurements-getDataMulti
  */
 export async function getDataMulti(
@@ -178,14 +206,21 @@ export type GetDataMultiOptions = {
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getLatestMeasurements
  */
-export async function getLatestMeasurements(senseBoxId: string): Promise<{
+export async function getLatestMeasurements(
+	senseBoxId: string,
+	options?: GetLatestMeasurementsOptions
+): Promise<{
 	_id: string;
 	sensors: GetLatestMeasurement[];
 }> {
-	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors`);
+	const r = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors`, { params: options });
 
 	return r.data;
 }
+
+export type GetLatestMeasurementsOptions = {
+	count: number;
+};
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getLatestMeasurementOfSensor
