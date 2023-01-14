@@ -25,11 +25,11 @@ export async function calculateIdw(
 		options.exposure = options.exposure.join();
 	}
 
-	const r = await axios.get('https://api.opensensemap.org/statistics/idw', {
-		params: Object.assign({ phenomenon, bbox }, options)
-	});
-
-	return r.data;
+	return (
+		await axios.get('https://api.opensensemap.org/statistics/idw', {
+			params: Object.assign({ phenomenon, bbox }, options)
+		})
+	).data;
 }
 
 export type CalculateIdwOptions = {

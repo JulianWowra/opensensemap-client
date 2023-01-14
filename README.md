@@ -1,6 +1,6 @@
 # openSenseMap Client
 
-Based on API version: `v10.0.3`
+Based on API version: `v10.2.3`
 
 [![NPM](https://nodei.co/npm/opensensemap-client.png)](https://npmjs.org/package/opensensemap-client)
 
@@ -68,75 +68,87 @@ start();
 
 ## Listed functions according to API documentation of openSenseMap
 
-- Introduction
-- Boxes
+- **Introduction**
+- **Boxes**
   - [Get one senseBox](https://docs.opensensemap.org/#api-Boxes-getBox)
-    - Function [getBox](https://killerjulian.github.io/opensensemap-client/modules.html#getBox)
+    - _Function:_ [`.getBox()`](https://killerjulian.github.io/opensensemap-client/functions/getBox.html)
   - [Get all senseBoxes](https://docs.opensensemap.org/#api-Boxes-getBoxes)
-    - Function [getBoxes](https://killerjulian.github.io/opensensemap-client/modules.html#getBoxes)
+    - _Function:_ [`.getBoxes()`](https://killerjulian.github.io/opensensemap-client/functions/getBoxes.html)
   - [Post new senseBox](https://docs.opensensemap.org/#api-Boxes-postNewBox)
-    - Function [postNewBox](https://killerjulian.github.io/opensensemap-client/modules.html#postNewBox)
+    - _Function:_ [`.postNewBox()`](https://killerjulian.github.io/opensensemap-client/functions/postNewBox.html)
   - [Update a senseBox](https://docs.opensensemap.org/#api-Boxes-updateBox)
-    - Function [updateBox](https://killerjulian.github.io/opensensemap-client/modules.html#updateBox)
+    - _Function:_ [`.updateBox()`](https://killerjulian.github.io/opensensemap-client/functions/updateBox.html)
   - [Mark a senseBox and its measurements for deletion](https://docs.opensensemap.org/#api-Boxes-deleteBox)
-    - Function [deleteBox](https://killerjulian.github.io/opensensemap-client/modules.html#deleteBox)
+    - _Function:_ [`.deleteBox()`](https://killerjulian.github.io/opensensemap-client/functions/deleteBox.html)
+  - [Claim a senseBox marked for transfer](https://docs.opensensemap.org/#api-Boxes-claimBox)
+    - _Function:_ [`.claimBox()`](https://killerjulian.github.io/opensensemap-client/functions/claimBox.html)
   - [Download the Arduino script for your senseBox](https://docs.opensensemap.org/#api-Boxes-getSketch)
-    - Function [getSketch](https://killerjulian.github.io/opensensemap-client/modules.html#getSketch)
+    - _Function:_ [`.getSketch()`](https://killerjulian.github.io/opensensemap-client/functions/getSketch.html)
   - [Get locations of a senseBox](https://docs.opensensemap.org/#api-Boxes-getBoxLocations)
-    - Function [getBoxLocations](https://killerjulian.github.io/opensensemap-client/modules.html#getBoxLocations)
-- Interpolation
+    - _Function:_ [`.getBoxLocations()`](https://killerjulian.github.io/opensensemap-client/functions/getBoxLocations.html)
+  - [Get transfer information for a senseBox](https://docs.opensensemap.org/#api-Boxes-getTransfer)
+    - _Function:_ [`.getTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/getTransfer.html)
+  - [Mark a senseBox for transferring to a different user](https://docs.opensensemap.org/#api-Boxes-createTransfer)
+    - _Function:_ [`.createTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/createTransfer.html)
+  - [Revoke transfer token and remove senseBox from transfer](https://docs.opensensemap.org/#api-Boxes-removeTransfer)
+    - _Function:_ [`.removeTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/removeTransfer.html)
+  - [Update a transfer token](https://docs.opensensemap.org/#api-Boxes-updateTransfer)
+    - _Function:_ [`.updateTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/updateTransfer.html)
+- **Interpolation**
   - [Get a Inverse Distance Weighting Interpolation as FeatureCollection](https://docs.opensensemap.org/#api-Interpolation-calculateIdw)
-    - Function [calculateIdw](https://killerjulian.github.io/opensensemap-client/modules.html#calculateIdw)
-- Measurements
+    - _Function:_ [`.calculateIdw()`](https://killerjulian.github.io/opensensemap-client/functions/calculateIdw.html)
+- **Measurements**
   - [Post new measurement](https://docs.opensensemap.org/#api-Measurements-postNewMeasurement)
-    - Function [postNewMeasurement](https://killerjulian.github.io/opensensemap-client/modules.html#postNewMeasurement)
+    - _Function:_ [`.postNewMeasurement()`](https://killerjulian.github.io/opensensemap-client/functions/postNewMeasurement.html)
   - [Get the 10000 latest measurements for a sensor](https://docs.opensensemap.org/#api-Measurements-getData)
-    - Function [getData](https://killerjulian.github.io/opensensemap-client/modules.html#getData)
+    - _Function:_ [`.getData()`](https://killerjulian.github.io/opensensemap-client/functions/getData.html)
   - [Delete measurements of a sensor](https://docs.opensensemap.org/#api-Measurements-deleteMeasurements)
-    - Function [deleteMeasurements](https://killerjulian.github.io/opensensemap-client/modules.html#deleteMeasurements)
+    - _Function:_ [`.deleteMeasurements()`](https://killerjulian.github.io/opensensemap-client/functions/deleteMeasurements.html)
+  - [Get latest measurements for a grouptag as JSON](https://docs.opensensemap.org/#api-Measurements-getDataByGroupTag)
+    - _Function:_ [`.getDataByGroupTag()`](https://killerjulian.github.io/opensensemap-client/functions/getDataByGroupTag.html)
   - [Get latest measurements for a phenomenon as CSV](https://docs.opensensemap.org/#api-Measurements-getDataMulti)
-    - Function [getDataMulti](https://killerjulian.github.io/opensensemap-client/modules.html#getDataMulti)
+    - _Function:_ [`.getDataMulti()`](https://killerjulian.github.io/opensensemap-client/functions/getDataMulti.html)
   - [Get latest measurements of a senseBox](https://docs.opensensemap.org/#api-Measurements-getLatestMeasurements)
-    - Function [getLatestMeasurements](https://killerjulian.github.io/opensensemap-client/modules.html#getLatestMeasurements)
+    - _Function:_ [`.getLatestMeasurements()`](https://killerjulian.github.io/opensensemap-client/functions/getLatestMeasurements.html)
+  - [Get latest measurements of a sensor](https://docs.opensensemap.org/#api-Measurements-getLatestMeasurementOfSensor)
+    - _Function:_ [`.getLatestMeasurementOfSensor()`](https://killerjulian.github.io/opensensemap-client/functions/getLatestMeasurementOfSensor.html)
   - [Post multiple new measurements](https://docs.opensensemap.org/#api-Measurements-postNewMeasurements)
-    - Function [postNewMeasurements](https://killerjulian.github.io/opensensemap-client/modules.html#postNewMeasurements)
-- Misc
+    - _Function:_ [`.postNewMeasurements()`](https://killerjulian.github.io/opensensemap-client/functions/postNewMeasurements.html)
+- **Misc**
   - [Get some statistics about the database](https://docs.opensensemap.org/#api-Misc-getStatistics)
-    - Function [getStatistics](https://killerjulian.github.io/opensensemap-client/modules.html#getStatistics)
+    - _Function:_ [`.getStatistics()`](https://killerjulian.github.io/opensensemap-client/functions/getStatistics.html)
   - [print all routes](https://docs.opensensemap.org/#api-Misc-printRoutes)
-    - Function [printRoutes](https://killerjulian.github.io/opensensemap-client/modules.html#printRoutes)
-- Statistics
+    - _Function:_ [`.printRoutes()`](https://killerjulian.github.io/opensensemap-client/functions/printRoutes.html)
+- **Statistics**
   - [Compute basic descriptive statistics over specified time windows](https://docs.opensensemap.org/#api-Statistics-descriptive)
-    - Function [descriptive](https://killerjulian.github.io/opensensemap-client/modules.html#descriptive)
-- Users
+    - _Function:_ [`.descriptive()`](https://killerjulian.github.io/opensensemap-client/functions/descriptive.html)
+- **Users**
   - [Register new](https://docs.opensensemap.org/#api-Users-register)
-    - Function [register](https://killerjulian.github.io/opensensemap-client/modules.html#register)
+    - _Function:_ [`.register()`](https://killerjulian.github.io/opensensemap-client/functions/register.html)
   - [Delete user, all of its boxes and all of its boxes measurements](https://docs.opensensemap.org/#api-Users-deleteUser)
-    - Function [deleteUser](https://killerjulian.github.io/opensensemap-client/modules.html#deleteUser)
+    - _Function:_ [`.deleteUser()`](https://killerjulian.github.io/opensensemap-client/functions/deleteUser.html)
   - [Get details](https://docs.opensensemap.org/#api-Users-getUser)
-    - Function [getUser](https://killerjulian.github.io/opensensemap-client/modules.html#getUser)
+    - _Function:_ [`.getUser()`](https://killerjulian.github.io/opensensemap-client/functions/getUser.html)
   - [Refresh Authorization](https://docs.opensensemap.org/#api-Users-refresh_auth)
-    - Function [refreshAuth](https://killerjulian.github.io/opensensemap-client/modules.html#refreshAuth)
-  - [Sing in](https://docs.opensensemap.org/#api-Users-sign_in)
-    - Function [singIn](https://killerjulian.github.io/opensensemap-client/modules.html#singIn)
-  - [Sing out](https://docs.opensensemap.org/#api-Users-sign_out)
-    - Function [singOut](https://killerjulian.github.io/opensensemap-client/modules.html#singOut)
+    - _Function:_ [`.refreshAuth()`](https://killerjulian.github.io/opensensemap-client/functions/refreshAuth.html)
+  - [Sign in](https://docs.opensensemap.org/#api-Users-sign_in)
+    - _Function:_ [`.signIn()`](https://killerjulian.github.io/opensensemap-client/functions/signIn.html)
+  - [Sign out](https://docs.opensensemap.org/#api-Users-sign_out)
+    - _Function:_ [`.signOut()`](https://killerjulian.github.io/opensensemap-client/functions/signOut.html)
   - [Update user details](https://docs.opensensemap.org/#api-Users-updateUser)
-    - Function [updateUser](https://killerjulian.github.io/opensensemap-client/modules.html#updateUser)
+    - _Function:_ [`.updateUser()`](https://killerjulian.github.io/opensensemap-client/functions/updateUser.html)
   - [confirm email address](https://docs.opensensemap.org/#api-Users-confirm_email)
-    - Function [confirmEmail](https://killerjulian.github.io/opensensemap-client/modules.html#confirmEmail)
-  - [list all boxes of the signed in user](https://docs.opensensemap.org/#api-Users-getUserBoxes)
-    - Function [getUserBoxes](https://killerjulian.github.io/opensensemap-client/modules.html#getUserBoxes)
+    - _Function:_ [`.confirmEmail()`](https://killerjulian.github.io/opensensemap-client/functions/confirmEmail.html)
+  - [list all boxes and sharedBoxes of the signed in user](https://docs.opensensemap.org/#api-Users-getUserBoxes)
+    - _Function:_ [`.getUserBoxes()`](https://killerjulian.github.io/opensensemap-client/functions/getUserBoxes.html)
   - [request a resend of the email confirmation](https://docs.opensensemap.org/#api-Users-resend_email_confirmation)
-    - Function [resendEmailConfirmation](https://killerjulian.github.io/opensensemap-client/modules.html#resendEmailConfirmation)
+    - _Function:_ [`.resendEmailConfirmation()`](https://killerjulian.github.io/opensensemap-client/functions/resendEmailConfirmation.html)
   - [request password reset](https://docs.opensensemap.org/#api-Users-request_password_reset)
-    - Function [requestPasswordReset](https://killerjulian.github.io/opensensemap-client/modules.html#requestPasswordReset)
+    - _Function:_ [`.requestPasswordReset()`](https://killerjulian.github.io/opensensemap-client/functions/requestPasswordReset.html)
   - [reset password with passwordResetToken](https://docs.opensensemap.org/#api-Users-password_reset)
-    - Function [passwordReset](https://killerjulian.github.io/opensensemap-client/modules.html#passwordReset)
+    - _Function:_ [`.passwordReset()`](https://killerjulian.github.io/opensensemap-client/functions/passwordReset.html)
 
-## TypeDoc
-
-Click [here](https://killerjulian.github.io/opensensemap-client/)
+You can find more information in the [full documentaion](https://killerjulian.github.io/opensensemap-client/).
 
 ---
 

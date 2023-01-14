@@ -8,11 +8,11 @@ import axios from 'axios';
  * @see https://docs.opensensemap.org/#api-Misc-getStatistics
  */
 export async function getStatistics(options?: GetStatisticsOptions): Promise<number[] | string[]> {
-	const r = await axios.get('https://api.opensensemap.org/stats', {
-		params: options
-	});
-
-	return r.data;
+	return (
+		await axios.get('https://api.opensensemap.org/stats', {
+			params: options
+		})
+	).data;
 }
 
 export type GetStatisticsOptions = {
@@ -23,7 +23,5 @@ export type GetStatisticsOptions = {
  * @see https://docs.opensensemap.org/#api-Misc-printRoutes
  */
 export async function printRoutes(): Promise<string> {
-	const r = await axios.get('https://api.opensensemap.org/');
-
-	return r.data;
+	return (await axios.get('https://api.opensensemap.org/')).data;
 }

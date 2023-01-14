@@ -22,19 +22,19 @@ export async function register(
 	token: string;
 	refreshToken: string;
 }> {
-	const r = await axios.post(
-		'https://api.opensensemap.org/users/register',
-		Object.assign(
-			{
-				name,
-				email,
-				password
-			},
-			options
+	return (
+		await axios.post(
+			'https://api.opensensemap.org/users/register',
+			Object.assign(
+				{
+					name,
+					email,
+					password
+				},
+				options
+			)
 		)
-	);
-
-	return r.data;
+	).data;
 }
 
 export type RegisterOptions = {
@@ -51,16 +51,16 @@ export async function deleteUser(
 	code: 'Ok';
 	message: 'User and all boxes of user marked for deletion. Bye Bye!';
 }> {
-	const r = await axios.delete('https://api.opensensemap.org/users/me', {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		},
-		data: {
-			password
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.delete('https://api.opensensemap.org/users/me', {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			},
+			data: {
+				password
+			}
+		})
+	).data;
 }
 
 /**
@@ -72,13 +72,13 @@ export async function getUser(authorization: string): Promise<{
 		me: User;
 	};
 }> {
-	const r = await axios.get('https://api.opensensemap.org/users/me', {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.get('https://api.opensensemap.org/users/me', {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		})
+	).data;
 }
 
 /**
@@ -93,11 +93,11 @@ export async function refreshAuth(token: string): Promise<{
 	token: string;
 	refreshToken: string;
 }> {
-	const r = await axios.post('https://api.opensensemap.org/users/refresh-auth', {
-		token
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/refresh-auth', {
+			token
+		})
+	).data;
 }
 
 /**
@@ -115,25 +115,25 @@ export async function signIn(
 	token: string;
 	refreshToken: string;
 }> {
-	const r = await axios.post('https://api.opensensemap.org/users/sign-in', {
-		email,
-		password
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/sign-in', {
+			email,
+			password
+		})
+	).data;
 }
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-sign_out
  */
 export async function signOut(authorization: string): Promise<{ code: 'Ok'; message: 'Successfully signed out' }> {
-	const r = await axios.post('https://api.opensensemap.org/users/sign-out', undefined, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/sign-out', undefined, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		})
+	).data;
 }
 
 /**
@@ -144,27 +144,27 @@ export async function updateUser(
 	authorization: string,
 	options: UpdateUserOptions
 ): Promise<UserUpdated | UserNotUpdated> {
-	const r = await axios.put(
-		'https://api.opensensemap.org/users/me',
-		Object.assign(
+	return (
+		await axios.put(
+			'https://api.opensensemap.org/users/me',
+			Object.assign(
+				{
+					currentPassword
+				},
+				options
+			),
 			{
-				currentPassword
-			},
-			options
-		),
-		{
-			headers: {
-				Authorization: `Bearer ${authorization}`
+				headers: {
+					Authorization: `Bearer ${authorization}`
+				}
 			}
-		}
-	);
-
-	return r.data;
+		)
+	).data;
 }
 
 export type UpdateUserOptions = {
 	email?: string;
-	language?: string;
+	language?: 'en_US' | 'de_DE';
 	name?: string;
 	newPassword?: string;
 };
@@ -179,30 +179,25 @@ export async function confirmEmail(
 	code: 'Ok';
 	message: 'E-Mail successfully confirmed. Thank you';
 }> {
-	const r = await axios.post('https://api.opensensemap.org/users/confirm-email', {
-		email,
-		token
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/confirm-email', {
+			email,
+			token
+		})
+	).data;
 }
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUserBoxes
  */
-export async function getUserBoxes(authorization: string): Promise<{
-	code: 'Ok';
-	data: {
-		boxes: BoxData[];
-	};
-}> {
-	const r = await axios.get('https://api.opensensemap.org/users/me/boxes', {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		}
-	});
-
-	return r.data;
+export async function getUserBoxes(authorization: string): Promise<{ code: 'Ok'; data: { boxes: BoxData[]; sharedBoxes: BoxData[] } }> {
+	return (
+		await axios.get('https://api.opensensemap.org/users/me/boxes', {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		})
+	).data;
 }
 
 /**
@@ -212,24 +207,24 @@ export async function resendEmailConfirmation(authorization: string): Promise<{
 	code: 'Ok';
 	message: string;
 }> {
-	const r = await axios.post('https://api.opensensemap.org/users/me/resend-email-confirmation', undefined, {
-		headers: {
-			Authorization: `Bearer ${authorization}`
-		}
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/me/resend-email-confirmation', undefined, {
+			headers: {
+				Authorization: `Bearer ${authorization}`
+			}
+		})
+	).data;
 }
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-request_password_reset
  */
 export async function requestPasswordReset(email: string): Promise<{ code: 'Ok'; message: 'Password reset initiated' }> {
-	const r = await axios.post('https://api.opensensemap.org/users/request-password-reset', {
-		email
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/request-password-reset', {
+			email
+		})
+	).data;
 }
 
 /**
@@ -242,12 +237,12 @@ export async function passwordReset(
 	code: 'Ok';
 	message: 'Password successfully changed. You can now login with your new password';
 }> {
-	const r = await axios.post('https://api.opensensemap.org/users/password-reset', {
-		password,
-		token
-	});
-
-	return r.data;
+	return (
+		await axios.post('https://api.opensensemap.org/users/password-reset', {
+			password,
+			token
+		})
+	).data;
 }
 
 export interface UserUpdated {
