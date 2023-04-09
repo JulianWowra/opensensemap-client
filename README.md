@@ -1,6 +1,6 @@
 # openSenseMap Client
 
-Based on API version: `v10.2.3`
+Based on API version: `v11.0.0`
 
 [![NPM](https://nodei.co/npm/opensensemap-client.png)](https://npmjs.org/package/opensensemap-client)
 
@@ -148,7 +148,7 @@ start();
   - [reset password with passwordResetToken](https://docs.opensensemap.org/#api-Users-password_reset)
     - _Function:_ [`.passwordReset()`](https://killerjulian.github.io/opensensemap-client/functions/passwordReset.html)
 
-You can find more information in the [full documentaion](https://killerjulian.github.io/opensensemap-client/).
+You can find more information in the [full documentation](https://killerjulian.github.io/opensensemap-client/).
 
 ---
 

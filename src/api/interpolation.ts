@@ -12,7 +12,7 @@ export async function calculateIdw(
 	phenomenon: string,
 	bbox: string,
 	options?: CalculateIdwOptions
-): Promise<{ code: 'NotFound'; message: 'no measurements found' } | CalculateIdw> {
+): Promise<{ code: 'NotFound'; message: 'no measurements found' } | CalculatedIdw> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -43,7 +43,7 @@ export type CalculateIdwOptions = {
 	exposure?: string | Exposure[];
 };
 
-export interface CalculateIdw {
+export interface CalculatedIdw {
 	code: 'Ok';
 	data: {
 		breaks: number[];
