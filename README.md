@@ -1,6 +1,6 @@
 # openSenseMap Client
 
-Based on API version: `v10.2.3`
+Based on API version: `v11.0.0`
 
 [![NPM](https://nodei.co/npm/opensensemap-client.png)](https://npmjs.org/package/opensensemap-client)
 
