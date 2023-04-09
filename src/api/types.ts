@@ -59,7 +59,8 @@ export type SensorTemplates =
 	| 'soundlevelmeter'
 	| 'windspeed'
 	| 'scd30'
-	| 'dps310';
+	| 'dps310'
+	| 'sps30';
 
 export interface MQTT {
 	enabled: boolean;
