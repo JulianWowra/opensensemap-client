@@ -33,7 +33,7 @@ export async function getBox(senseBoxId: string): Promise<BoxData> {
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBoxes
  */
-export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise<BoxData> {
+export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise<BoxData[]> {
 	if (options?.date && options.date instanceof Date) {
 		options.date = options.date.toISOString();
 	}
