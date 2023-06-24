@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { Exposure, RFC3339Date } from '../globalTypes';
-import { CalculatedIdw } from './_interpolationModels';
+import { Exposure } from '../box/_boxModels';
+import { RFC3339Date, WGS84Coordinates } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Interpolation-calculateIdw
  */
-export async function calculateIdw(phenomenon: string, bbox: string, options?: CalculateIdwOptions): Promise<CalculateIdwResult> {
+export async function calculateIdw(phenomenon: string, bbox: WGS84Coordinates, options?: CalculateIdwOptions): Promise<CalculateIdwResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -36,9 +36,31 @@ export type CalculateIdwOptions = {
 	exposure?: string | Exposure[];
 };
 
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L112C7-L112C7
+ */
 export type CalculateIdwResult =
 	| {
 			code: 'NotFound';
 			message: 'no measurements found';
 	  }
-	| CalculatedIdw;
+	| {
+			code: 'Ok';
+			data: {
+				breaks: number[];
+				featureCollection: {
+					type: 'FeatureCollection';
+					features: {
+						type: string;
+						properties?: {
+							idwValues: number[];
+						};
+						geometry: {
+							type: string;
+							coordinates: number[][][];
+						};
+					};
+				}[];
+				timesteps: RFC3339Date[];
+			};
+	  };

@@ -16,6 +16,9 @@ export async function deleteUser(password: string, authorization: string): Promi
 	).data;
 }
 
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L330
+ */
 export type DeleteUserResult = {
 	code: 'Ok';
 	message: 'User and all boxes of user marked for deletion. Bye Bye!';

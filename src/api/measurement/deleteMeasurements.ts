@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { RFC3339Date } from '../globalTypes';
+import { OpenSenseMapID, RFC3339Date } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-deleteMeasurements
  */
 export async function deleteMeasurements(
-	senseBoxId: string,
-	sensorId: string,
+	senseBoxId: OpenSenseMapID,
+	sensorId: OpenSenseMapID,
 	authorization: string,
 	options?: DeleteMeasurementsOptions
 ): Promise<DeleteMeasurementsResult> {
@@ -45,6 +45,9 @@ export type DeleteMeasurementsOptions = {
 	deleteAllMeasurements?: boolean;
 };
 
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/sensorsController.js#L47
+ */
 export type DeleteMeasurementsResult = {
 	code: 'Ok';
 	message: string;

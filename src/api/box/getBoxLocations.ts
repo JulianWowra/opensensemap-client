@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { RFC3339Date } from '../globalTypes';
-import { BoxCurrentLocation } from './_boxModels';
+import { OpenSenseMapID, RFC3339Date } from '../globalTypes';
+import { BoxLocation } from './_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBoxLocations
  */
-export async function getBoxLocations(senseBoxId: string, options?: GetBoxLocationsOptions): Promise<GetBoxLocationsResult> {
+export async function getBoxLocations(senseBoxId: OpenSenseMapID, options?: GetBoxLocationsOptions): Promise<GetBoxLocationsResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -16,12 +16,7 @@ export async function getBoxLocations(senseBoxId: string, options?: GetBoxLocati
 
 	return (
 		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/locations`, {
-			params: Object.assign(
-				{
-					format: 'json'
-				},
-				options
-			)
+			params: options
 		})
 	).data;
 }
@@ -31,4 +26,7 @@ export type GetBoxLocationsOptions = {
 	'to-date': RFC3339Date | Date;
 };
 
-export type GetBoxLocationsResult = BoxCurrentLocation[];
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L173C3-L173C3
+ */
+export type GetBoxLocationsResult = BoxLocation[];

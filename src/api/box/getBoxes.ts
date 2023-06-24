@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { Exposure, Model, RFC3339Date } from '../globalTypes';
-import { BoxData } from './_boxModels';
+import { RFC3339Date, WGS84Coordinates } from '../globalTypes';
+import { BoxData, BoxModel, Exposure } from './_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBoxes
  */
-export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise<GetBoxesResult> {
+export async function getBoxes(bbox: WGS84Coordinates, options?: GetBoxesOptions): Promise<GetBoxesResult> {
 	if (options?.date && options.date instanceof Date) {
 		options.date = options.date.toISOString();
 	}
@@ -22,7 +22,6 @@ export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise
 		await axios.get('https://api.opensensemap.org/boxes', {
 			params: Object.assign(
 				{
-					format: 'json',
 					bbox
 				},
 				options
@@ -35,7 +34,7 @@ export type GetBoxesOptions = {
 	date?: RFC3339Date | Date;
 	phenomenon?: string;
 	grouptag?: string | string[];
-	model?: Model;
+	model?: BoxModel;
 	classify?: boolean;
 	minimal?: boolean;
 	full?: boolean;

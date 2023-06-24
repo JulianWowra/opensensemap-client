@@ -2,6 +2,7 @@
 // https://docs.opensensemap.org/#api-Measurements
 //
 
+export * from './_measurementModels';
 export * from './deleteMeasurements';
 export * from './getData';
 export * from './getDataByGroupTag';

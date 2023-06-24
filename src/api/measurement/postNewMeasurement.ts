@@ -1,14 +1,14 @@
 import axios from 'axios';
-import { RFC3339Date } from '../globalTypes';
+import { OpenSenseMapID, RFC3339Date } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-postNewMeasurement
  */
 export async function postNewMeasurement(
-	senseBoxId: string,
-	sensorId: string,
+	senseBoxId: OpenSenseMapID,
+	sensorId: OpenSenseMapID,
 	value: string | number,
-	authorization?: string,
+	boxAuthorization?: string,
 	options?: PostNewMeasurementOptions
 ): Promise<PostNewMeasurementResult> {
 	if (options?.createdAt && options.createdAt instanceof Date) {
@@ -25,7 +25,7 @@ export async function postNewMeasurement(
 				options
 			),
 			{
-				headers: authorization ? { Authorization: authorization } : {}
+				headers: boxAuthorization ? { Authorization: boxAuthorization } : {}
 			}
 		)
 	).data;
@@ -36,4 +36,7 @@ export type PostNewMeasurementOptions = {
 	location?: Location;
 };
 
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L315
+ */
 export type PostNewMeasurementResult = 'Measurement saved in box';

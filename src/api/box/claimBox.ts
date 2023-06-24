@@ -19,6 +19,9 @@ export async function claimBox(transferToken: string, authorization: string): Pr
 	).data;
 }
 
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L602
+ */
 export type ClaimBoxResult = {
 	message: 'Device successfully claimed!';
 };

@@ -1,4 +1,5 @@
 export * from './api/box/_index';
+export * from './api/globalTypes';
 export * from './api/interpolation/_index';
 export * from './api/measurement/_index';
 export * from './api/misc/_index';

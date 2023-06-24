@@ -1,101 +1,27 @@
+/**
+ * @see https://docs.opensensemap.org/#api-_
+ */
 export type RFC3339Date = string;
 
-export type Model =
-	| 'homeV2Lora'
-	| 'homeV2Ethernet'
-	| 'homeV2Wifi'
-	| 'homeEthernet'
-	| 'homeWifi'
-	| 'homeEthernetFeinstaub'
-	| 'homeWifiFeinstaub'
-	| 'luftdaten_sds011'
-	| 'luftdaten_sds011_dht11'
-	| 'luftdaten_sds011_dht22'
-	| 'luftdaten_sds011_bmp180'
-	| 'luftdaten_sds011_bme280'
-	| 'hackair_home_v2';
+/**
+ * @see https://docs.opensensemap.org/#api-_
+ */
+export type OpenSenseMapID = string;
 
-export type Exposure = 'indoor' | 'outdoor' | 'mobile' | 'unknown';
+/**
+ * 4 WGS84 coordinates separated by commas. You can use a tool like {@link http://bboxfinder.com} to mark the box
+ * @example "7.645503,51.962280,7.646168,51.962515"
+ */
+export type WGS84Coordinates = string;
 
-export type Columns = 'boxId' | 'boxName' | 'exposure' | 'height' | 'lat' | 'lon' | 'phenomenon' | 'sensorType' | 'unit';
-
-export type AdvancedColumns =
-	| 'boxId'
-	| 'boxName'
-	| 'exposure'
-	| 'height'
-	| 'lat'
-	| 'lon'
-	| 'phenomenon'
-	| 'sensorType'
-	| 'unit'
-	| 'createdAt'
-	| 'value'
-	| 'sensorId';
-
-export type Operation =
-	| 'arithmeticMean'
-	| 'geometricMean'
-	| 'harmonicMean'
-	| 'max'
-	| 'median'
-	| 'min'
-	| 'mode'
-	| 'rootMeanSquare'
-	| 'standardDeviation'
-	| 'sum'
-	| 'variance';
-
-export type Location = { lat: number; lng: number; height?: number } | [number, number, number?];
-
-export type SensorTemplates =
-	| 'hdc1080'
-	| 'bmp280'
-	| 'tsl45315'
-	| 'veml6070'
-	| 'sds011'
-	| 'bme680'
-	| 'smt50'
-	| 'soundlevelmeter'
-	| 'windspeed'
-	| 'scd30'
-	| 'dps310'
-	| 'sps30';
-
-export interface MQTT {
-	enabled: boolean;
-	url: string;
-	topic: string;
-	messageFormat: 'json' | 'csv';
-	decodeOptions: string;
-	connectionOptions: string;
-}
-
-export interface TTN {
-	dev_id: string;
-	app_id: string;
-	profile: 'lora-serialization' | 'sensebox/home' | 'json' | 'debug' | 'cayenne-lpp';
-	decodeOptions?: unknown[];
-	port: number;
-}
-
-export interface Sensor {
-	title: string;
-	unit: string;
-	sensorType: string;
-	icon?: string;
-}
-
-export interface SensorEdited extends Sensor {
-	_id: string;
-	edited: 'true' | string;
-}
-
-export interface SensorNew extends Sensor {
-	new: 'true' | string;
-}
-
-export interface SensorDeleted {
-	_id: string;
-	deleted: 'true' | string;
-}
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L31C2-L31C2
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/measurement/measurement.js#L23
+ */
+export type Coordinates =
+	| {
+			lat: number;
+			lng: number;
+			height?: number;
+	  }
+	| [number, number, number?];
