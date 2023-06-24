@@ -1,9 +1,6 @@
 import axios from 'axios';
-import { Exposure, RFC3339Date } from './types';
-
-//
-// https://docs.opensensemap.org/#api-Interpolation
-//
+import { Exposure, RFC3339Date } from '../globalTypes';
+import { CalculatedIdw } from './_interpolationModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Interpolation-calculateIdw
@@ -45,24 +42,3 @@ export type CalculateIdwResult =
 			message: 'no measurements found';
 	  }
 	| CalculatedIdw;
-
-export interface CalculatedIdw {
-	code: 'Ok';
-	data: {
-		breaks: number[];
-		featureCollection: {
-			type: string;
-			features: {
-				type: string;
-				properties: {
-					idwValues: number[];
-				};
-				geometry: {
-					type: string;
-					coordinates: number[][][];
-				};
-			};
-		}[];
-		timesteps: RFC3339Date[];
-	};
-}

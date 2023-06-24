@@ -1,9 +1,5 @@
 import axios from 'axios';
-import { Columns, Exposure, Operation, RFC3339Date } from './types';
-
-//
-// https://docs.opensensemap.org/#api-Statistics
-//
+import { Columns, Exposure, Operation, RFC3339Date } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Statistics-descriptive

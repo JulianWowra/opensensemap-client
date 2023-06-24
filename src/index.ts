@@ -1,8 +1,6 @@
-export * from './api/boxes';
-export * from './api/interpolation';
-export * from './api/measurements';
-export * from './api/misc';
-export * from './api/statistics';
-export * from './api/types';
-export * from './api/user';
-
+export * from './api/box/_index';
+export * from './api/interpolation/_index';
+export * from './api/measurement/_index';
+export * from './api/misc/_index';
+export * from './api/statistic/_index';
+export * from './api/user/_index';
