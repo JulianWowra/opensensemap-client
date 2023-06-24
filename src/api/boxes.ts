@@ -369,7 +369,7 @@ export interface BoxSensors {
 	unit: string;
 	sensorType: string;
 	icon?: string;
-	lastMeasurement?: LastMeasurement | string;
+	lastMeasurement?: LastMeasurement;
 }
 
 export interface LastMeasurement {
