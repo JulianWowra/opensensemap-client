@@ -14,7 +14,7 @@ export async function postNewMeasurement(
 	value: string | number,
 	authorization?: string,
 	options?: PostNewMeasurementOptions
-): Promise<'Measurement saved in box'> {
+): Promise<PostNewMeasurementResult> {
 	if (options?.createdAt && options.createdAt instanceof Date) {
 		options.createdAt = options.createdAt.toISOString();
 	}
@@ -40,20 +40,12 @@ export type PostNewMeasurementOptions = {
 	location?: Location;
 };
 
+export type PostNewMeasurementResult = 'Measurement saved in box';
+
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getData
  */
-export async function getData(
-	senseBoxId: string,
-	sensorId: string,
-	options?: GetDataOptions
-): Promise<
-	{
-		value: string;
-		location: Location;
-		createdAt: RFC3339Date;
-	}[]
-> {
+export async function getData(senseBoxId: string, sensorId: string, options?: GetDataOptions): Promise<GetDataResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -76,6 +68,12 @@ export type GetDataOptions = {
 	'outlier-window'?: number;
 };
 
+export type GetDataResult = {
+	value: string;
+	location: Location;
+	createdAt: RFC3339Date;
+}[];
+
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-deleteMeasurements
  */
@@ -84,7 +82,7 @@ export async function deleteMeasurements(
 	sensorId: string,
 	authorization: string,
 	options?: DeleteMeasurementsOptions
-): Promise<{ code: 'Ok'; message: string }> {
+): Promise<DeleteMeasurementsResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -120,17 +118,15 @@ export type DeleteMeasurementsOptions = {
 	deleteAllMeasurements?: boolean;
 };
 
+export type DeleteMeasurementsResult = {
+	code: 'Ok';
+	message: string;
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getDataByGroupTag
  */
-export async function getDataByGroupTag(grouptag: string | string[]): Promise<
-	{
-		boxId: string;
-		sensorId: string;
-		value: string;
-		createdAt: string;
-	}[]
-> {
+export async function getDataByGroupTag(grouptag: string | string[]): Promise<GetDataByGroupTagResult> {
 	try {
 		return (
 			await axios.get('https://api.opensensemap.org/boxes/data/bytag', {
@@ -148,6 +144,13 @@ export async function getDataByGroupTag(grouptag: string | string[]): Promise<
 	}
 }
 
+export type GetDataByGroupTagResult = {
+	boxId: string;
+	sensorId: string;
+	value: string;
+	createdAt: string;
+}[];
+
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getDataMulti
  */
@@ -156,15 +159,7 @@ export async function getDataMulti(
 	bbox: string | undefined,
 	phenomenon: string,
 	options?: GetDataMultiOptions
-): Promise<
-	{
-		createdAt: RFC3339Date;
-		value: string;
-		sensorId: string;
-		lat: number;
-		lon: number;
-	}[]
-> {
+): Promise<GetDataMultiResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -203,21 +198,31 @@ export type GetDataMultiOptions = {
 	exposure?: string | Exposure[];
 };
 
+export type GetDataMultiResult = {
+	createdAt: RFC3339Date;
+	value: string;
+	sensorId: string;
+	lat: number;
+	lon: number;
+}[];
+
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getLatestMeasurements
  */
 export async function getLatestMeasurements(
 	senseBoxId: string,
 	options?: GetLatestMeasurementsOptions
-): Promise<{
-	_id: string;
-	sensors: GetLatestMeasurement[];
-}> {
+): Promise<GetLatestMeasurementsResult> {
 	return (await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors`, { params: options })).data;
 }
 
 export type GetLatestMeasurementsOptions = {
 	count: number;
+};
+
+export type GetLatestMeasurementsResult = {
+	_id: string;
+	sensors: GetLatestMeasurement[];
 };
 
 /**
@@ -227,13 +232,15 @@ export async function getLatestMeasurementOfSensor(
 	senseBoxId: string,
 	sensorId: string,
 	options?: GetLatestMeasurementOfSensorOptions
-): Promise<GetLatestMeasurement | string> {
+): Promise<GetLatestMeasurementOfSensorResult> {
 	return (await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors/${sensorId}`, { params: options })).data;
 }
 
 export type GetLatestMeasurementOfSensorOptions = {
 	onlyValue?: boolean;
 };
+
+export type GetLatestMeasurementOfSensorResult = GetLatestMeasurement | string;
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-postNewMeasurements
@@ -242,7 +249,7 @@ export async function postNewMeasurements(
 	senseBoxId: string,
 	data: PostNewMeasurementsData,
 	authorization?: string
-): Promise<'Measurements saved in box'> {
+): Promise<PostNewMeasurementsResult> {
 	data = data.map((element) => {
 		if (typeof element.value === 'number') {
 			element.value = element.value.toString();
@@ -268,6 +275,8 @@ export type PostNewMeasurementsData = {
 	createdAt?: RFC3339Date | Date;
 	location?: Location;
 }[];
+
+export type PostNewMeasurementsResult = 'Measurements saved in box';
 
 export interface GetLatestMeasurement {
 	_id: string;

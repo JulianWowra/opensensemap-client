@@ -8,11 +8,7 @@ import { Exposure, RFC3339Date } from './types';
 /**
  * @see https://docs.opensensemap.org/#api-Interpolation-calculateIdw
  */
-export async function calculateIdw(
-	phenomenon: string,
-	bbox: string,
-	options?: CalculateIdwOptions
-): Promise<{ code: 'NotFound'; message: 'no measurements found' } | CalculatedIdw> {
+export async function calculateIdw(phenomenon: string, bbox: string, options?: CalculateIdwOptions): Promise<CalculateIdwResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -42,6 +38,13 @@ export type CalculateIdwOptions = {
 	numClasses?: number;
 	exposure?: string | Exposure[];
 };
+
+export type CalculateIdwResult =
+	| {
+			code: 'NotFound';
+			message: 'no measurements found';
+	  }
+	| CalculatedIdw;
 
 export interface CalculatedIdw {
 	code: 'Ok';

@@ -20,7 +20,7 @@ import {
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBox
  */
-export async function getBox(senseBoxId: string): Promise<BoxData> {
+export async function getBox(senseBoxId: string): Promise<GetBoxResult> {
 	return (
 		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
 			params: {
@@ -30,10 +30,12 @@ export async function getBox(senseBoxId: string): Promise<BoxData> {
 	).data;
 }
 
+export type GetBoxResult = BoxData;
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBoxes
  */
-export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise<BoxData[]> {
+export async function getBoxes(bbox: string, options?: GetBoxesOptions): Promise<GetBoxesResult> {
 	if (options?.date && options.date instanceof Date) {
 		options.date = options.date.toISOString();
 	}
@@ -72,6 +74,8 @@ export type GetBoxesOptions = {
 	exposure?: string | Exposure[];
 };
 
+export type GetBoxesResult = BoxData[];
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-postNewBox
  */
@@ -81,10 +85,7 @@ export async function postNewBox(
 	location: Location,
 	authorization: string,
 	options?: PostNewBoxOptions
-): Promise<{
-	message: 'Box successfully created';
-	data: BoxData;
-}> {
+): Promise<PostNewBoxResult> {
 	return (
 		await axios.post(
 			'https://api.opensensemap.org/boxes',
@@ -116,17 +117,15 @@ export type PostNewBoxOptions = {
 	sharedBox?: boolean;
 };
 
+export type PostNewBoxResult = {
+	message: 'Box successfully created';
+	data: BoxData;
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateBox
  */
-export async function updateBox(
-	senseBoxId: string,
-	authorization: string,
-	options: UpdateBoxOptions
-): Promise<{
-	code: 'Ok';
-	data: BoxData;
-}> {
+export async function updateBox(senseBoxId: string, authorization: string, options: UpdateBoxOptions): Promise<UpdateBoxResult> {
 	return (
 		await axios.put(`https://api.opensensemap.org/boxes/${senseBoxId}`, options, {
 			headers: {
@@ -148,17 +147,15 @@ export type UpdateBoxOptions = {
 	addons?: Record<string | number, string | number>;
 };
 
+export type UpdateBoxResult = {
+	code: 'Ok';
+	data: BoxData;
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-deleteBox
  */
-export async function deleteBox(
-	senseBoxId: string,
-	authorization: string,
-	password: string
-): Promise<{
-	code: 'Ok';
-	message: 'box and all associated measurements marked for deletion';
-}> {
+export async function deleteBox(senseBoxId: string, authorization: string, password: string): Promise<DeleteBoxResult> {
 	return (
 		await axios.delete(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
 			headers: {
@@ -171,10 +168,15 @@ export async function deleteBox(
 	).data;
 }
 
+export type DeleteBoxResult = {
+	code: 'Ok';
+	message: 'box and all associated measurements marked for deletion';
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-claimBox
  */
-export async function claimBox(transferToken: string, authorization: string): Promise<{ message: 'Device successfully claimed!' }> {
+export async function claimBox(transferToken: string, authorization: string): Promise<ClaimBoxResult> {
 	return (
 		await axios.post(
 			'https://api.opensensemap.org/boxes/claim',
@@ -190,10 +192,14 @@ export async function claimBox(transferToken: string, authorization: string): Pr
 	).data;
 }
 
+export type ClaimBoxResult = {
+	message: 'Device successfully claimed!';
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getSketch
  */
-export async function getSketch(senseBoxId: string, authorization: string, options?: GetSketchOptions): Promise<string> {
+export async function getSketch(senseBoxId: string, authorization: string, options?: GetSketchOptions): Promise<GetSketchResult> {
 	return (
 		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/script`, {
 			headers: {
@@ -217,10 +223,12 @@ export type GetSketchOptions = {
 	display_enabled?: boolean;
 };
 
+export type GetSketchResult = string;
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBoxLocations
  */
-export async function getBoxLocations(senseBoxId: string, options?: GetBoxLocationsOptions): Promise<BoxCurrentLocation[]> {
+export async function getBoxLocations(senseBoxId: string, options?: GetBoxLocationsOptions): Promise<GetBoxLocationsResult> {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -246,15 +254,12 @@ export type GetBoxLocationsOptions = {
 	'to-date': RFC3339Date | Date;
 };
 
+export type GetBoxLocationsResult = BoxCurrentLocation[];
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getTransfer
  */
-export async function getTransfer(
-	senseBoxId: string,
-	authorization: string
-): Promise<{
-	data: BoxTransferInformation;
-}> {
+export async function getTransfer(senseBoxId: string, authorization: string): Promise<GetTransferResult> {
 	return (
 		await axios.get(`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`, {
 			headers: {
@@ -264,17 +269,14 @@ export async function getTransfer(
 	).data;
 }
 
+export type GetTransferResult = {
+	data: BoxTransferInformation;
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-createTransfer
  */
-export async function createTransfer(
-	senseBoxId: string,
-	expiresAt: RFC3339Date,
-	authorization: string
-): Promise<{
-	message: 'Box successfully prepared for transfer';
-	data: BoxTransferInformation;
-}> {
+export async function createTransfer(senseBoxId: string, expiresAt: RFC3339Date, authorization: string): Promise<CreateTransferResult> {
 	return (
 		await axios.post(
 			'https://api.opensensemap.org/boxes/transfer',
@@ -291,10 +293,15 @@ export async function createTransfer(
 	).data;
 }
 
+export type CreateTransferResult = {
+	message: 'Box successfully prepared for transfer';
+	data: BoxTransferInformation;
+};
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-removeTransfer
  */
-export async function removeTransfer(senseBoxId: string, transferToken: string, authorization: string): Promise<''> {
+export async function removeTransfer(senseBoxId: string, transferToken: string, authorization: string): Promise<RemoveTransferResult> {
 	return (
 		await axios.delete('https://api.opensensemap.org/boxes/transfer', {
 			headers: {
@@ -308,6 +315,8 @@ export async function removeTransfer(senseBoxId: string, transferToken: string, 
 	).data;
 }
 
+export type RemoveTransferResult = string;
+
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateTransfer
  */
@@ -316,10 +325,7 @@ export async function updateTransfer(
 	transferToken: string,
 	expiresAt: RFC3339Date,
 	authorization: string
-): Promise<{
-	message: 'Transfer successfully updated';
-	data: BoxTransferInformation;
-}> {
+): Promise<UpdateTransferResult> {
 	return (
 		await axios.put(
 			`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`,
@@ -335,6 +341,11 @@ export async function updateTransfer(
 		)
 	).data;
 }
+
+export type UpdateTransferResult = {
+	message: 'Transfer successfully updated';
+	data: BoxTransferInformation;
+};
 
 export interface BoxData {
 	_id: string;

@@ -17,7 +17,7 @@ export async function descriptive(
 	operation: Operation,
 	window: string,
 	options?: DescriptiveOptions
-): Promise<Record<string, string | number>[]> {
+): Promise<DescriptiveResult> {
 	if (fromDate instanceof Date) {
 		fromDate = fromDate.toISOString();
 	}
@@ -57,3 +57,5 @@ export type DescriptiveOptions = {
 	columns?: string | Columns[];
 	exposure?: string | Exposure[];
 };
+
+export type DescriptiveResult = Record<string, string | number>[];
