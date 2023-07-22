@@ -8,6 +8,7 @@ src
 .eslintrc.js
 .gitignore
 .npmignore
+.prettierignore
 .prettierrc.js
 CONTRIBUTING.md
 tsconfig.json

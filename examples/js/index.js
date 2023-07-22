@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const client = require('../../dist/index');
 
 async function start() {
