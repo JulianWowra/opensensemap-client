@@ -6,6 +6,7 @@ export * from './_userModels';
 export * from './confirmEmail';
 export * from './deleteUser';
 export * from './getUser';
+export * from './getUserBox';
 export * from './getUserBoxes';
 export * from './passwordReset';
 export * from './refreshAuth';

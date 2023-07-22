@@ -4,9 +4,10 @@ import { BoxDataWithSecrets } from '../box/_boxModels';
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUserBoxes
  */
-export async function getUserBoxes(authorization: string): Promise<GetUserBoxesResult> {
+export async function getUserBoxes(authorization: string, options?: GetUserBoxesOptions): Promise<GetUserBoxesResult> {
 	return (
 		await axios.get('https://api.opensensemap.org/users/me/boxes', {
+			params: options,
 			headers: {
 				Authorization: `Bearer ${authorization}`
 			}
@@ -14,13 +15,18 @@ export async function getUserBoxes(authorization: string): Promise<GetUserBoxesR
 	).data;
 }
 
+export type GetUserBoxesOptions = {
+	page?: number;
+};
+
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L257
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/api/lib/controllers/usersController.js#L259
  */
 export type GetUserBoxesResult = {
 	code: 'Ok';
 	data: {
 		boxes: BoxDataWithSecrets[];
+		boxes_count: number;
 		sharedBoxes: BoxDataWithSecrets[];
 	};
 };

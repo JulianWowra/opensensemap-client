@@ -1,12 +1,12 @@
 # openSenseMap Client
 
-Based on API version: `v11.0.1`
+Based on API version: `v11.1.0`
 
 [![NPM](https://nodei.co/npm/opensensemap-client.png)](https://npmjs.org/package/opensensemap-client)
 
 ## Install
 
-```sh
+```
 yarn add opensensemap-client
 ```
 
@@ -139,6 +139,8 @@ start();
     - _Function:_ [`.updateUser()`](https://killerjulian.github.io/opensensemap-client/functions/updateUser.html)
   - [confirm email address](https://docs.opensensemap.org/#api-Users-confirm_email)
     - _Function:_ [`.confirmEmail()`](https://killerjulian.github.io/opensensemap-client/functions/confirmEmail.html)
+  - [get specific box of the signed in user](https://docs.opensensemap.org/#api-Users-getUserBox)
+    - _Function:_ [`.getUserBox()`](https://killerjulian.github.io/opensensemap-client/functions/getUserBox.html)
   - [list all boxes and sharedBoxes of the signed in user](https://docs.opensensemap.org/#api-Users-getUserBoxes)
     - _Function:_ [`.getUserBoxes()`](https://killerjulian.github.io/opensensemap-client/functions/getUserBoxes.html)
   - [request a resend of the email confirmation](https://docs.opensensemap.org/#api-Users-resend_email_confirmation)
