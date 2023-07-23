@@ -1,0 +1,1246 @@
+_type: export
+__export_format: 4
+__export_date: 2023-07-23T07:25:05.005Z
+__export_source: insomnia.desktop.app:v2023.4.0
+resources:
+  - _id: req_fb00458b91284843b9e2c6e8d065d4e5
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1689954495695
+    created: 1687621763480
+    url: '{{ _.baseUrl }}/boxes/claim'
+    name: claimBox
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"token": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: '{{ _.userToken }}'
+    metaSortKey: -1687618849612
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_45b8644602c74f8f944799f9e4b4136b
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1687721554685
+    created: 1687609986199
+    name: box
+    description: ''
+    environment: {}
+    environmentPropertyOrder: {}
+    metaSortKey: -1687693687685
+    _type: request_group
+  - _id: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    parentId: null
+    modified: 1690096779458
+    created: 1690096779458
+    name: OpenSenseMap
+    description: ''
+    scope: design
+    _type: workspace
+  - _id: req_b6ea261b0d724397988fdf664492abfd
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1689954400942
+    created: 1687674880918
+    url: '{{ _.baseUrl }}/boxes/transfer'
+    name: createTransfer
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"boxId": "{{ _.boxID }}",
+        	"date": "{% customTimestamp 'add', '', '', '1', '', '', '', '', 'iso-8601', '', '' %}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_1615d933d3db4b86ab40c4d2234bb5b9
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1687618849587
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f0c459a712434caba0c430eb725dd095
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1689963442253
+    created: 1687678405384
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}'
+    name: deleteBox
+    description: ''
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"password": "{{ _.userPassword }}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1687618849574.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b6f9b672ff704c5eba7d8536974f8091
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1687621773258
+    created: 1687618849662
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}'
+    name: getBox
+    description: ''
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1687618849562
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_2ee19d88f36c441f8bef3f0458a61d6e
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1687683328517
+    created: 1687678807780
+    url: '{{ _.baseUrl }}/boxes'
+    name: getBoxes
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"bbox": "7.645503,51.962280,7.646168,51.962515"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687618849512
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5c9370148721477f9715fab3e1457607
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1687977432633
+    created: 1687683582239
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/locations'
+    name: getBoxLocations
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"from-date": "{% customTimestamp 'specific', '2000', '1', '1', '1', '0', '0', '0', 'iso-8601', '', '' %}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687618849462
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f923290e26924301aa0ee4d0f8894bd1
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1687686990891
+    created: 1687686511597
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/script'
+    name: getSketch
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1687618849412
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_cf7191105a0b439c98b9e72df7d8df2e
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1687688018601
+    created: 1687687013545
+    url: '{{ _.baseUrl }}/boxes/transfer/{{ _.boxID }}'
+    name: getTransfer
+    description: ''
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: '{{ _.userToken }}'
+    metaSortKey: -1687618849362
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1d1d52a02b6a41f6a550cd069b1420e5
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1689884137332
+    created: 1687688062661
+    url: '{{ _.baseUrl }}/boxes'
+    name: postNewBox
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Test",
+        	"exposure": "outdoor",
+        	"location": [0, 70],
+        	"sensors": [
+        		{
+        			"title": "Testsensor",
+        			"unit": "g/cm²"
+        		}
+        	]
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1687618849312
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_26b69beeb4b04f2b905db79d3d532dc4
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1689884143480
+    created: 1687688094414
+    url: '{{ _.baseUrl }}/boxes/transfer'
+    name: removeTransfer
+    description: ''
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"boxId": "{{ _.boxID }}",
+        	"token": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1687618849262
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_aacd5c4ce01f4dad9973a4f6cbddb07c
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1689955066542
+    created: 1687689492405
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}'
+    name: updateBox
+    description: ''
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1687618849212
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_840aee97ad384fd69c9c14f95cc2d026
+    parentId: fld_45b8644602c74f8f944799f9e4b4136b
+    modified: 1687691692843
+    created: 1687691166683
+    url: '{{ _.baseUrl }}/boxes/transfer/{{ _.boxID }}'
+    name: updateTransfer
+    description: ''
+    method: PUT
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"token": "",
+        	"date": "{% customTimestamp 'add', '', '', '3', '', '', '', '', 'iso-8601', '', '' %}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: '{{ _.userToken }}'
+    metaSortKey: -1687618849162
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a4e309da5b064bf58de87362527ae6cb
+    parentId: fld_daf654815a49451ca78eaa901c5fe32d
+    modified: 1687798314606
+    created: 1687721559543
+    url: '{{ _.baseUrl }}/statistics/idw'
+    name: calculateIdw
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"phenomenon": "Temperatur",
+        	"bbox": "7.992554,50.534380,12.008057,51.730431"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687721559543
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_daf654815a49451ca78eaa901c5fe32d
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1687721556091
+    created: 1687721547961
+    name: interpolation
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1687693687635
+    _type: request_group
+  - _id: req_d3329f31a49148099071577ef296ca20
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1689962776779
+    created: 1687797686749
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/{{ _.sensorID }}/measurements'
+    name: deleteMeasurements
+    description: ''
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"deleteAllMeasurements": true
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: '{{ _.userToken }}'
+    metaSortKey: -1687797686749
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1687797476208
+    created: 1687797450965
+    name: measurement
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1687693687585
+    _type: request_group
+  - _id: req_9b602dd5ee0e4d36b8bbe6c558cc8a65
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1687804628235
+    created: 1687798047937
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/data/{{ _.sensorID }}'
+    name: getData
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"to-date": "{% now 'iso-8601', '' %}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687797686699
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d365a30852604e329f43e4ca9f746b81
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1687978687703
+    created: 1687977599367
+    url: '{{ _.baseUrl }}/boxes/data/bytag'
+    name: getDataByGroupTag
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"grouptag": "edu"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687797686649
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b151254d95dc4f19a67f82178537d5b6
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1688583798880
+    created: 1688580610056
+    url: '{{ _.baseUrl }}/boxes/data'
+    name: getDataMulti
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"boxId": "{{ _.boxID }}",
+        	"phenomenon": "Temperatur",
+        	"format": "json",
+        	"from-date": "{% customTimestamp 'specific', '2000', '1', '1', '1', '0', '0', '0', 'iso-8601', '', '' %}",
+        	"columns": "value"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687797686599
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_820b3278e00645b3a7496ce2edbbbeb8
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1688667334672
+    created: 1688666475714
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/sensors/{{ _.sensorID }}'
+    name: getLatestMeasurementOfSensor
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687797686549
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_9a20dadcad9a41ec8675fa7d2ff5af8e
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1688667464847
+    created: 1688667358436
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/sensors'
+    name: getLatestMeasurements
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"count": 5
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1687797686499
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_1b04ae6c4201483e813d0ffbc2d57ba2
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1689959526752
+    created: 1688668038686
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/{{ _.sensorID }}'
+    name: postNewMeasurement
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"value": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: apikey
+      disabled: false
+      key: Authorization
+      value: '{{ _.boxAuthorization }}'
+      addTo: header
+    metaSortKey: -1687797686449
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_73077b9df7e344e59183c1d723175cb7
+    parentId: fld_de65fdaa3d5c4105be5da761ac7ba36d
+    modified: 1689960302809
+    created: 1688668058546
+    url: '{{ _.baseUrl }}/boxes/{{ _.boxID }}/data'
+    name: postNewMeasurements
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        [
+        	{
+        		"sensor": "{{ _.sensorID }}",
+        		"value": "2"
+        	},
+        	{
+        		"sensor": "{{ _.sensorID }}",
+        		"value": "3"
+        	}
+        ]
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: apikey
+      disabled: false
+      key: Authorization
+      value: '{{ _.boxAuthorization }}'
+      addTo: header
+    metaSortKey: -1687797686399
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d4b7af6aa83c49c4a818bf7f8aca9c9c
+    parentId: fld_f04e38966dd1461bb22020ecd2185044
+    modified: 1688668410429
+    created: 1688668131344
+    url: '{{ _.baseUrl }}/stats'
+    name: getStatistics
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"human": true
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1688668131344
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_f04e38966dd1461bb22020ecd2185044
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1688668128758
+    created: 1688668125487
+    name: misc
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1687693687535
+    _type: request_group
+  - _id: req_56705883fd374575b556b0dd885a575a
+    parentId: fld_f04e38966dd1461bb22020ecd2185044
+    modified: 1688668491247
+    created: 1688668480785
+    url: '{{ _.baseUrl }}/'
+    name: printRoutes
+    description: ''
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1688668131294
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d2ecbea6e29d4ca39545ef86ae753550
+    parentId: fld_233a32cc4e4e4d88a1f47ab7c971e0c6
+    modified: 1689015988480
+    created: 1689011295266
+    url: '{{ _.baseUrl }}/statistics/descriptive'
+    name: descriptive
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: >-
+        {
+        	"boxId": "{{ _.boxID }}",
+        	"phenomenon": "Temperatur",
+        	"format": "json",
+        	"from-date": "{% customTimestamp 'specific', '2000', '1', '1', '1', '0', '0', '0', 'iso-8601', '', '' %}",
+        	"to-date": "{% now 'iso-8601', '' %}",
+        	"window": "120000",
+        	"operation": "sum"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1689011295266
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_233a32cc4e4e4d88a1f47ab7c971e0c6
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1689011292446
+    created: 1689011290373
+    name: statistic
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1687693687485
+    _type: request_group
+  - _id: req_182e4dd21cc0468083f9ac930625b7f1
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689880174492
+    created: 1689610668869
+    url: '{{ _.baseUrl }}/users/confirm-email'
+    name: confirmEmail
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "{{ _.userEmail }}",
+        	"token": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1689610668869
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1689099787662
+    created: 1689099765750
+    name: user
+    description: ''
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1687693687435
+    _type: request_group
+  - _id: req_8eef85e5e1ee4c6e8d216719ee42e969
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689968117962
+    created: 1689610984927
+    url: '{{ _.baseUrl }}/users/me'
+    name: deleteUser
+    description: ''
+    method: DELETE
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"password": "{{ _.userPassword }}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: '{{ _.userToken }}'
+    metaSortKey: -1689355230646.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_3d94c9743a1c4ba689f4719bf9531b9b
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689101215498
+    created: 1689099792424
+    url: '{{ _.baseUrl }}/users/me'
+    name: getUser
+    description: ''
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1689099792424
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_d7dee0b00240470e9f15feca411bb2e8
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689968087977
+    created: 1689964575687
+    url: '{{ _.baseUrl }}/users/me/boxes/{{ _.boxID }}'
+    name: getUserBox
+    description: ''
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1689077668134.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8d2cfbcc03404d39b1a6541f407898fd
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689968108428
+    created: 1689099845377
+    url: '{{ _.baseUrl }}/users/me/boxes'
+    name: getUserBoxes
+    description: ''
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1689055543845
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_51d34f58529149d7874a3588a2533198
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689954467625
+    created: 1689611278748
+    url: '{{ _.baseUrl }}/users/password-reset'
+    name: passwordReset
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"password": "",
+        	"token": ""
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1689055543832.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_7133bc8d94854c7a94c447e007d2fae6
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689272880302
+    created: 1689272523405
+    url: '{{ _.baseUrl }}/users/refresh-auth'
+    name: refreshAuth
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"token": "{{ _.userRefreshToken }}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_ad8581aca1d541c3a97ffb22a04527aa
+      - id: pair_ca0a651bc4064d95968eeb80295c820c
+        name: "{% savevariable 'userToken', 'responseBody', '', 'jsonPath', '$.token'
+          %}"
+        value: ''
+        description: ''
+      - id: pair_907e25b36b444641bc9624c6f7e43b20
+        name: "{% savevariable 'userRefreshToken', 'responseBody', '', 'jsonPath',
+          '$.refreshToken' %}"
+        value: ''
+        description: ''
+    authentication: {}
+    metaSortKey: -1689055543820
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_5db565d51c4044cea003da56a06352dc
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689875114307
+    created: 1689612271584
+    url: '{{ _.baseUrl }}/users/register'
+    name: register
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "{{ _.userName }}",
+        	"email": "{{ _.userEmail }}",
+        	"password": "{{ _.userPassword }}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_f222495396874a04bc71bf5bbb212e9a
+      - id: pair_5875314bad54421c865d652b9c920301
+        name: "{% savevariable 'userToken', 'responseBody', '', 'jsonPath', '$.token'
+          %}"
+        value: ''
+        description: ''
+      - id: pair_ea05e30d22c148928536d161db05f6e6
+        name: "{% savevariable 'userRefreshToken', 'responseBody', '', 'jsonPath',
+          '$.refreshToken' %}"
+        value: ''
+        description: ''
+    authentication: {}
+    metaSortKey: -1689055543807.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b71ad724858f4dc1ae2ae6d4d24acc5e
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689878883236
+    created: 1689612500637
+    url: '{{ _.baseUrl }}/users/request-password-reset'
+    name: requestPasswordReset
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "{{ _.userEmail }}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication: {}
+    metaSortKey: -1689055543801.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_552f052c08bd4af385e10a17e71f6cd4
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689879794165
+    created: 1689612634231
+    url: '{{ _.baseUrl }}/users/me/resend-email-confirmation'
+    name: resendEmailConfirmation
+    description: ''
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1689055543798.125
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_c0c44b35442f4a8fa851f4d64a5f9cb2
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689184823605
+    created: 1689100059624
+    url: '{{ _.baseUrl }}/users/sign-in'
+    name: signIn
+    description: ''
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"email": "{{ _.userEmail }}",
+        	"password": "{{ _.userPassword }}"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_65bc6d32912c48b09ff6d92524ae1a87
+      - id: pair_23c3415d274548ac89d83ea25f59d84c
+        name: "{% savevariable 'userToken', 'responseBody', '', 'jsonPath', '$.token'
+          %}"
+        value: ''
+        description: ''
+      - id: pair_f50f982cbdf94eebaa068b9ebb87c3ec
+        name: "{% savevariable 'userRefreshToken', 'responseBody', '', 'jsonPath',
+          '$.refreshToken' %}"
+        value: ''
+        description: ''
+    authentication: {}
+    metaSortKey: -1689055543795
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_751089e227f94f7d8487982bc81dc1c0
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689187209529
+    created: 1689187101280
+    url: '{{ _.baseUrl }}/users/sign-out'
+    name: signOut
+    description: ''
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication:
+      type: bearer
+      token: '{{ _.userToken }}'
+      prefix: Bearer
+    metaSortKey: -1689055543745
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a5472538442f466e8661aeb2b2bf81f5
+    parentId: fld_3aa2f1961a3c4fb8820106590e4b3c8e
+    modified: 1689873497489
+    created: 1689871454430
+    url: '{{ _.baseUrl }}/users/me'
+    name: updateUser
+    description: ''
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"currentPassword": "{{ _.userPassword }}",
+        	"language": "de_DE"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+    authentication:
+      type: bearer
+      prefix: Bearer
+      token: '{{ _.userToken }}'
+    metaSortKey: -1689055543695
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_3e985efaceed4ca78c12d1d092200af9
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1687618969633
+    created: 1687609956132
+    name: Base Environment
+    data: {}
+    dataPropertyOrder: {}
+    color: null
+    isPrivate: false
+    metaSortKey: 1687609956132
+    _type: environment
+  - _id: jar_d423ecce6dc142f889450147b4521c69
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1687609956133
+    created: 1687609956133
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_ebad5036d5a54538ad38c93a3d356f8e
+    parentId: wrk_b40edded1d6b48ceac4cb12f9d40561d
+    modified: 1690096779463
+    created: 1690096779460
+    fileName: OpenSenseMap
+    contents: ''
+    contentType: yaml
+    _type: api_spec
+  - _id: env_3549159adc6048d1ac45480c0cdf98e0
+    parentId: env_3e985efaceed4ca78c12d1d092200af9
+    modified: 1690097035148
+    created: 1687618970849
+    name: Default Environment
+    data:
+      baseUrl: https://api.opensensemap.org
+      boxID: 57000b8745fd40c8196ad04c
+      boxAuthorization: ''
+      sensorID: 57000b8745fd40c8196ad052
+      userName: ''
+      userEmail: ''
+      userPassword: ''
+      userToken: "{% variable 'userToken' %}"
+      userRefreshToken: "{% variable 'userRefreshToken' %}"
+    dataPropertyOrder:
+      '&':
+        - baseUrl
+        - boxID
+        - boxAuthorization
+        - sensorID
+        - userName
+        - userEmail
+        - userPassword
+        - userToken
+        - userRefreshToken
+    color: '#00d176'
+    isPrivate: false
+    metaSortKey: 1687618970849
+    _type: environment

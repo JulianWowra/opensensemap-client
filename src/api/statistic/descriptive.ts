@@ -1,23 +1,24 @@
 import axios from 'axios';
-import { Columns, Exposure, Operation, RFC3339Date } from './types';
-
-//
-// https://docs.opensensemap.org/#api-Statistics
-//
+import { Columns, Exposure } from '../box/_boxModels';
+import { OpenSenseMapID, RFC3339Date, WGS84Coordinates } from '../globalTypes';
+import { Operation } from './_statisticModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Statistics-descriptive
  */
 export async function descriptive(
-	boxId: string[],
-	bbox: string | undefined,
+	target: DescriptiveParamTarget,
 	phenomenon: string,
 	fromDate: RFC3339Date | Date,
 	toDate: RFC3339Date | Date,
 	operation: Operation,
 	window: string,
 	options?: DescriptiveOptions
-): Promise<Record<string, string | number>[]> {
+): Promise<DescriptiveResult> {
+	if ('boxId' in target && Array.isArray(target.boxId)) {
+		target.boxId = target.boxId.join();
+	}
+
 	if (fromDate instanceof Date) {
 		fromDate = fromDate.toISOString();
 	}
@@ -38,8 +39,6 @@ export async function descriptive(
 		await axios.get('https://api.opensensemap.org/statistics/descriptive', {
 			params: Object.assign(
 				{
-					boxId: boxId.join(),
-					bbox,
 					phenomenon,
 					'from-date': fromDate,
 					'to-date': toDate,
@@ -47,13 +46,30 @@ export async function descriptive(
 					window,
 					format: 'json'
 				},
+				target,
 				options
 			)
 		})
 	).data;
 }
 
+export type DescriptiveParamTarget =
+	| {
+			boxId: OpenSenseMapID | OpenSenseMapID[];
+	  }
+	| {
+			bbox: WGS84Coordinates;
+	  };
+
 export type DescriptiveOptions = {
 	columns?: string | Columns[];
 	exposure?: string | Exposure[];
 };
+
+/**
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L325
+ */
+export type DescriptiveResult = {
+	sensorId: OpenSenseMapID;
+} & Record<Columns, string | undefined> &
+	Record<RFC3339Date, number>[];

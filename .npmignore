@@ -8,8 +8,10 @@ src
 .eslintrc.js
 .gitignore
 .npmignore
+.prettierignore
 .prettierrc.js
 CONTRIBUTING.md
+insomnia.yml
 tsconfig.json
 typedoc.css
 yarn.lock
