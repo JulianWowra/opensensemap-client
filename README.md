@@ -126,6 +126,13 @@ start();
 
 You can find more information in the [full documentation 📖](https://killerjulian.github.io/opensensemap-client/).
 
+## OpenSenseMap API documentation
+
+This library was created with a lot of work, reading the code from the [OpenSenseMap-API](https://github.com/sensebox/openSenseMap-API) by hand. In addition, this library provides an [Insomnia](https://insomnia.rest/) file for debugging purposes.
+
+**[📄 Insomnia file](https://github.com/KillerJulian/opensensemap-client/blob/master/insomnia.yml)**
+
+Import this file into Insomnia, install the plugins [`customtimestamp`](https://insomnia.rest/plugins/insomnia-plugin-customtimestamp) and [`save-variables`](https://insomnia.rest/plugins/insomnia-plugin-save-variables) and configure the environments if you needed. You are ready!
 
 ---
 

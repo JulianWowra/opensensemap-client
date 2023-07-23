@@ -11,6 +11,7 @@ src
 .prettierignore
 .prettierrc.js
 CONTRIBUTING.md
+insomnia.yml
 tsconfig.json
 typedoc.css
 yarn.lock
