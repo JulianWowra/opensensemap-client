@@ -21,7 +21,8 @@ export async function register(userName: UserName, email: string, password: stri
 }
 
 export type RegisterOptions = {
-	language: Language;
+	language?: Language;
+	integrations?: object;
 };
 
 /**

@@ -17,7 +17,7 @@ export type BoxData = {
 	currentLocation: BoxLocation;
 	loc: BoxLoc[];
 	updatedAt: RFC3339Date;
-	sensors: Sensor<Measurement | LastMeasurement | Measurement['_id']>[];
+	sensors: Sensor<Measurement | LastMeasurement | Measurement['_id'] | null>[];
 	lastMeasurementAt?: RFC3339Date;
 };
 
@@ -93,7 +93,7 @@ export type TTN = {
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/sensor/sensor.js#L8
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L1057
  */
-export type Sensor<T extends Measurement | LastMeasurement | Measurement['_id'] | undefined> = {
+export type Sensor<T extends Measurement | LastMeasurement | Measurement['_id'] | null | undefined> = {
 	_id: OpenSenseMapID;
 	title: string;
 	unit: string;

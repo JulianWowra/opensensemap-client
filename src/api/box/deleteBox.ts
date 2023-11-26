@@ -2,7 +2,6 @@ import axios from 'axios';
 import { OpenSenseMapID } from '../globalTypes';
 
 /**
- * ❗❗ BREAKING CHANGE!
  * @see https://docs.opensensemap.org/#api-Boxes-deleteBox
  */
 export async function deleteBox(senseBoxId: OpenSenseMapID, password: string, authorization: string): Promise<DeleteBoxResult> {
