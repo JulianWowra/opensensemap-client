@@ -6,6 +6,7 @@ export * from './_boxModels';
 export * from './claimBox';
 export * from './createTransfer';
 export * from './deleteBox';
+export * from './getAllTags';
 export * from './getBox';
 export * from './getBoxLocations';
 export * from './getBoxes';

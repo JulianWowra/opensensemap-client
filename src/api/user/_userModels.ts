@@ -11,6 +11,7 @@ export type UserData = {
 	boxes: OpenSenseMapID[];
 	sharedBoxes?: OpenSenseMapID[];
 	emailIsConfirmed: boolean;
+	integrations?: object;
 };
 
 /**

@@ -33,10 +33,15 @@ export async function postNewBox(
 }
 
 export type PostNewBoxOptions = {
+	description?: string;
 	grouptag?: string;
 	model?: BoxModel;
 	sensors?: PostNewBoxSensor[];
 	sensorTemplates?: SensorTemplates[];
+	serialPort?: 'Serial1' | 'Serial2';
+	soilDigitalPort?: 'A' | 'B' | 'C';
+	soundMeterPort?: 'A' | 'B' | 'C';
+	windSpeedPort?: 'A' | 'B' | 'C';
 	mqtt?: MQTT;
 	ttn?: TTN;
 	useAuth?: boolean;

@@ -28,6 +28,7 @@ export type UpdateUserOptions = {
 	language?: Language;
 	name?: string;
 	newPassword?: string;
+	integrations?: object;
 };
 
 export type UpdateUserResult = UpdateUserResultResultUpdated | UpdateUserResultUserNotUpdated;
@@ -47,12 +48,9 @@ export type UpdateUserResultResultUpdated = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/user/user.js#L533
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/11695a33cf0260a62aecbefd76c46735b690be62/packages/api/lib/controllers/usersController.js#L320
  */
 export type UpdateUserResultUserNotUpdated = {
 	code: 'Ok';
-	message: 'User successfully saved.';
-	data: {
-		me: { updated: false };
-	};
+	message: 'No changed properties supplied. User remains unchanged.';
 };
