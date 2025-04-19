@@ -103,12 +103,14 @@ export type Sensor<T extends Measurement | LastMeasurement | Measurement['_id'] 
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L77C5-L77C5
+ * @linkcode https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/index.js#L34
  */
 export type BoxModel =
 	| 'homeV2Lora'
 	| 'homeV2Ethernet'
+	| 'homeV2EthernetFeinstaub'
 	| 'homeV2Wifi'
+	| 'homeV2WifiFeinstaub'
 	| 'homeEthernet'
 	| 'homeWifi'
 	| 'homeEthernetFeinstaub'
@@ -118,6 +120,16 @@ export type BoxModel =
 	| 'luftdaten_sds011_dht22'
 	| 'luftdaten_sds011_bmp180'
 	| 'luftdaten_sds011_bme280'
+	| 'luftdaten_pms1003'
+	| 'luftdaten_pms1003_bme280'
+	| 'luftdaten_pms3003'
+	| 'luftdaten_pms3003_bme280'
+	| 'luftdaten_pms5003'
+	| 'luftdaten_pms5003_bme280'
+	| 'luftdaten_pms7003'
+	| 'luftdaten_pms7003_bme280'
+	| 'luftdaten_sps30_bme280'
+	| 'luftdaten_sps30_sht3x'
 	| 'hackair_home_v2';
 
 export type BoxTransferInformation = {

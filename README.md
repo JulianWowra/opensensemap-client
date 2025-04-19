@@ -1,6 +1,6 @@
 # openSenseMap Client
 
-Based on API version: `v11.2.0`
+Based on API version: `v11.3.0`
 
 [![NPM](https://nodei.co/npm/opensensemap-client.png)](https://npmjs.org/package/opensensemap-client)
 
@@ -54,6 +54,8 @@ start();
     - _Function:_ [`updateBox()`](https://killerjulian.github.io/opensensemap-client/functions/updateBox.html)
   - [Mark a senseBox and its measurements for deletion](https://docs.opensensemap.org/#api-Boxes-deleteBox)
     - _Function:_ [`deleteBox()`](https://killerjulian.github.io/opensensemap-client/functions/deleteBox.html)
+  - [Get all senseBox tags](https://docs.opensensemap.org/#api-Boxes-getAllTags)
+    - _Function:_ [`getAllTags()`](https://killerjulian.github.io/opensensemap-client/functions/getAllTags.html)
   - [Claim a senseBox marked for transfer](https://docs.opensensemap.org/#api-Boxes-claimBox)
     - _Function:_ [`claimBox()`](https://killerjulian.github.io/opensensemap-client/functions/claimBox.html)
   - [Download the Arduino script for your senseBox](https://docs.opensensemap.org/#api-Boxes-getSketch)
