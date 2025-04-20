@@ -2,9 +2,6 @@
 	"name": "opensensemap-client",
 	"description": "The library allows and improves type-based working with the openSenseMap API",
 	"version": "1.7.0",
-	"repository": "https://github.com/KillerJulian/opensensemap-client",
-	"homepage": "https://killerjulian.github.io/opensensemap-client/",
-	"author": "KillerJulian <info@killerjulian.de>",
 	"type": "module",
 	"main": "./dist/cjs/index.js",
 	"module": "./dist/esm/index.js",
@@ -16,6 +13,9 @@
 		"types": "./dist/dts/index.d.ts",
 		"default": "./dist/esm/index.js"
 	},
+	"repository": "https://github.com/JulianWowra/opensensemap-client",
+	"homepage": "https://julianwowra.github.io/opensensemap-client/",
+	"author": "Julian Wowra <development@julianwowra.de>",
 	"license": "MIT",
 	"publishConfig": {
 		"provenance": true
