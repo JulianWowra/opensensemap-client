@@ -7,6 +7,14 @@ Based on API version: `v11.3.0`
 ## Install
 
 ```
+npm install opensensemap-client
+```
+
+```
+pnpm install opensensemap-client
+```
+
+```
 yarn add opensensemap-client
 ```
 

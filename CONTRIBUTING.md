@@ -6,9 +6,9 @@
 
 Please use the following tools for development:
 
-- [NodeJS v18](https://nodejs.org/en/)
-- [yarn](https://yarnpkg.com/)
-- [.editorconfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [NodeJS v20](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
+- [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
 - [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
@@ -22,8 +22,8 @@ Note the following to create a pull request.
 
 Run the linter and fix any linting problems with your code:
 
-```
-yarn run lint
+```sh
+pnpm lint
 ```
 
 Document your changes in the `CHANGELOG.md`.
@@ -33,7 +33,7 @@ Create a pull request. Ideally your pull request should include these things:
 - Tests for the things you've changed/added
 - Good documentation / Comments in the code
 
-Now submit your pull request to merge from your fork to master. Then I will look at your request and if necessary suggest changes, improvements or alternatives.
+Now submit your pull request to merge from your fork to main. Then I will look at your request and if necessary suggest changes, improvements or alternatives.
 
 ---
 
