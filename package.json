@@ -2,16 +2,14 @@
 	"name": "opensensemap-client",
 	"description": "The library allows and improves type-based working with the openSenseMap API",
 	"version": "1.7.0",
-	"type": "module",
-	"main": "./dist/cjs/index.js",
-	"module": "./dist/esm/index.js",
-	"types": "./dist/dts/index.d.ts",
+	"main": "./dist/cjs/index.cjs",
+	"module": "./dist/esm/index.mjs",
+	"types": "./dist/types/index.d.ts",
 	"exports": {
-		"require": "./dist/cjs/index.js",
-		"import": "./dist/esm/index.js",
-		"deno": "./dist/esm/index.js",
-		"types": "./dist/dts/index.d.ts",
-		"default": "./dist/esm/index.js"
+		".": {
+			"import": "./dist/esm/index.mjs",
+			"require": "./dist/cjs/index.cjs"
+		}
 	},
 	"repository": "https://github.com/JulianWowra/opensensemap-client",
 	"homepage": "https://julianwowra.github.io/opensensemap-client/",
@@ -30,22 +28,24 @@
 		"eslint": "9.26.0",
 		"eslint-config-prettier": "10.1.2",
 		"prettier": "3.5.3",
+		"tsup": "^8.4.0",
 		"typedoc": "~0.28.4",
 		"typedoc-github-theme": "~0.3.0",
 		"typescript": "5.8.3",
 		"typescript-eslint": "8.31.1"
 	},
 	"scripts": {
-		"build": "pnpm run build:esm && pnpm run build:cjs && pnpm build:docs",
-		"build:esm": "tsc -p tsconfig.esm.json",
-		"build:cjs": "tsc -p tsconfig.cjs.json",
+		"build": "pnpm run build:lib && pnpm build:docs",
+		"build:lib": "tsup",
 		"build:docs": "typedoc src --plugin typedoc-github-theme",
+		"dev": "tsup --watch",
 		"lint": "pnpm lint:format && pnpm lint:code",
 		"lint:format": "prettier --check .",
 		"lint:code": "eslint ."
 	},
 	"pnpm": {
 		"onlyBuiltDependencies": [
+			"esbuild",
 			"eslint"
 		]
 	},
