@@ -1,16 +1,12 @@
 import axios from 'axios';
-import { array, type Infer, intersection, mask, object, optional, record, string } from 'superstruct';
+import { array, intersection, mask, object, optional, record, string } from 'superstruct';
 import { type Columns, COLUMNS, type ExposureType } from '../box/_boxModels';
 import { type CoordinatesWGS84, DATE_RFC3339, type DateRFC3339, type OpenSenseMapID } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getDataMulti
  */
-export async function getDataMulti(
-	phenomenon: string,
-	target: GetDataMultiParamTarget,
-	options?: GetDataMultiOptions
-): Promise<GetDataMultiResult> {
+export async function getDataMulti(phenomenon: string, target: GetDataMultiParamTarget, options?: GetDataMultiOptions) {
 	if ('boxId' in target && Array.isArray(target.boxId)) {
 		target.boxId = target.boxId.join();
 	}
@@ -72,5 +68,3 @@ const GET_DATA_MULTI_RESULT = array(
 		record(COLUMNS, optional(string()))
 	])
 );
-
-export type GetDataMultiResult = Infer<typeof GET_DATA_MULTI_RESULT>;

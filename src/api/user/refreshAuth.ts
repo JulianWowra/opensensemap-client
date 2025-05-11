@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object, string } from 'superstruct';
+import { literal, mask, object, string } from 'superstruct';
 import { USER_DATA } from './_userModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-refresh_auth
  */
-export async function refreshAuth(refreshToken: string): Promise<RefreshAuthResult> {
+export async function refreshAuth(refreshToken: string) {
 	const response = await axios.post('https://api.opensensemap.org/users/refresh-auth', {
 		token: refreshToken
 	});
@@ -25,5 +25,3 @@ const REFRESH_AUTH_RESULT = object({
 	token: string(),
 	refreshToken: string()
 });
-
-export type RefreshAuthResult = Infer<typeof REFRESH_AUTH_RESULT>;

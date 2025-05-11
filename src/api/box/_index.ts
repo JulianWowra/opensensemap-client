@@ -2,7 +2,6 @@
 // https://docs.opensensemap.org/#api-Boxes
 //
 
-export * from './_boxModels';
 export * from './claimBox';
 export * from './createTransfer';
 export * from './deleteBox';

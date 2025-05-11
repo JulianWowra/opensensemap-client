@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { array, boolean, type Infer, mask, object, optional, string } from 'superstruct';
+import { array, boolean, mask, object, optional, string } from 'superstruct';
 import type { DateRFC3339, OpenSenseMapID } from '../globalTypes';
 import { COORDINATES, DATE_RFC3339 } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getData
  */
-export async function getData(senseBoxId: OpenSenseMapID, sensorId: OpenSenseMapID, options?: GetDataOptions): Promise<GetDataResult> {
+export async function getData(senseBoxId: OpenSenseMapID, sensorId: OpenSenseMapID, options?: GetDataOptions) {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -40,5 +40,3 @@ const GET_DATA_RESULT = array(
 		isOutlier: optional(boolean())
 	})
 );
-
-export type GetDataResult = Infer<typeof GET_DATA_RESULT>;

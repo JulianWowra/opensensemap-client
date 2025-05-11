@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { array, type Infer, intersection, mask, number, object, optional, record, string } from 'superstruct';
+import { array, intersection, mask, number, object, optional, record, string } from 'superstruct';
 import { type Columns, COLUMNS, type ExposureType } from '../box/_boxModels';
 import { type CoordinatesWGS84, DATE_RFC3339, type DateRFC3339, OPENSENSEMAP_ID, type OpenSenseMapID } from '../globalTypes';
 import type { Operation } from './_statisticModels';
@@ -15,7 +15,7 @@ export async function descriptive(
 	operation: Operation,
 	window: string,
 	options?: DescriptiveOptions
-): Promise<DescriptiveResult> {
+) {
 	if ('boxId' in target && Array.isArray(target.boxId)) {
 		target.boxId = target.boxId.join();
 	}
@@ -79,5 +79,3 @@ const DESCRIPTIVE_RESULT = array(
 		record(DATE_RFC3339, number())
 	])
 );
-
-export type DescriptiveResult = Infer<typeof DESCRIPTIVE_RESULT>;

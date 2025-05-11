@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { enums, type Infer, literal, mask, object, union } from 'superstruct';
+import { enums, literal, mask, object, union } from 'superstruct';
 import { type Language, USER_DATA } from './_userModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-updateUser
  */
-export async function updateUser(currentPassword: string, authorization: string, options: UpdateUserOptions): Promise<UpdateUserResult> {
+export async function updateUser(currentPassword: string, authorization: string, options: UpdateUserOptions) {
 	const response = await axios.put(
 		'https://api.opensensemap.org/users/me',
 		Object.assign(
@@ -56,4 +56,3 @@ const UPDATE_USER_RESULT_USER_NOT_UPDATED = object({
 });
 
 const UPDATE_USER_RESULT = union([UPDATE_USER_RESULT_UPDATED, UPDATE_USER_RESULT_USER_NOT_UPDATED]);
-export type UpdateUserResult = Infer<typeof UPDATE_USER_RESULT>;

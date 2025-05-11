@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-confirm_email
  */
-export async function confirmEmail(email: string, confirmationToken: string): Promise<ConfirmEmailResult> {
+export async function confirmEmail(email: string, confirmationToken: string) {
 	const response = await axios.post('https://api.opensensemap.org/users/confirm-email', {
 		email,
 		token: confirmationToken
@@ -20,5 +20,3 @@ const CONFIRM_EMAIL_RESULT = object({
 	code: literal('Ok'),
 	message: literal('E-Mail successfully confirmed. Thank you')
 });
-
-export type ConfirmEmailResult = Infer<typeof CONFIRM_EMAIL_RESULT>;

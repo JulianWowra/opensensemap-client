@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object, pattern, string } from 'superstruct';
+import { literal, mask, object, pattern, string } from 'superstruct';
 import type { DateRFC3339, OpenSenseMapID } from '../globalTypes';
 
 /**
@@ -10,7 +10,7 @@ export async function deleteMeasurements(
 	sensorId: OpenSenseMapID,
 	authorization: string,
 	options?: DeleteMeasurementsOptions
-): Promise<DeleteMeasurementsResult> {
+) {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -53,5 +53,3 @@ const DELETE_MEASUREMENTS_RESULT = object({
 	code: literal('Ok'),
 	message: pattern(string(), /^Successfully deleted (all measurements|\d+ measurements|measurements between .+ and .+) of sensor .+$/)
 });
-
-export type DeleteMeasurementsResult = Infer<typeof DELETE_MEASUREMENTS_RESULT>;

@@ -1,17 +1,12 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 import type { DateRFC3339, OpenSenseMapID } from '../globalTypes';
 import { BOX_TRANSFER_INFORMATION } from './_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateTransfer
  */
-export async function updateTransfer(
-	senseBoxId: OpenSenseMapID,
-	transferToken: string,
-	expiresAt: DateRFC3339,
-	authorization: string
-): Promise<UpdateTransferResult> {
+export async function updateTransfer(senseBoxId: OpenSenseMapID, transferToken: string, expiresAt: DateRFC3339, authorization: string) {
 	const response = await axios.put(
 		`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`,
 		{
@@ -35,5 +30,3 @@ const UPDATE_TRANSFER_RESULT = object({
 	message: literal('Transfer successfully updated'),
 	data: BOX_TRANSFER_INFORMATION
 });
-
-export type UpdateTransferResult = Infer<typeof UPDATE_TRANSFER_RESULT>;

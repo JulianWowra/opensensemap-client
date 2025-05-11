@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 import type { Coordinates, OpenSenseMapID } from '../globalTypes';
 import type { MQTT, Sensor, TTN } from './_boxModels';
 import { BOX_DATA_WITH_SECRETS } from './_boxModels';
@@ -7,7 +7,7 @@ import { BOX_DATA_WITH_SECRETS } from './_boxModels';
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateBox
  */
-export async function updateBox(senseBoxId: OpenSenseMapID, authorization: string, options: UpdateBoxOptions): Promise<UpdateBoxResult> {
+export async function updateBox(senseBoxId: OpenSenseMapID, authorization: string, options: UpdateBoxOptions) {
 	const reponse = await axios.put(`https://api.opensensemap.org/boxes/${senseBoxId}`, options, {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -36,8 +36,6 @@ const UPDATE_BOX_RESULT = object({
 	code: literal('Ok'),
 	data: BOX_DATA_WITH_SECRETS
 });
-
-export type UpdateBoxResult = Infer<typeof UPDATE_BOX_RESULT>;
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateBox

@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object, string } from 'superstruct';
+import { literal, mask, object, string } from 'superstruct';
 import { USER_DATA } from './_userModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-sign_in
  */
-export async function signIn(email: string, password: string): Promise<SignInResult> {
+export async function signIn(email: string, password: string) {
 	const response = await axios.post('https://api.opensensemap.org/users/sign-in', {
 		email,
 		password
@@ -26,5 +26,3 @@ const SIGN_IN_RESULT = object({
 	token: string(),
 	refreshToken: string()
 });
-
-export type SignInResult = Infer<typeof SIGN_IN_RESULT>;

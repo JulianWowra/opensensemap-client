@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-request_password_reset
  */
-export async function requestPasswordReset(email: string): Promise<RequestPasswordResetResult> {
+export async function requestPasswordReset(email: string) {
 	const reponse = await axios.post('https://api.opensensemap.org/users/request-password-reset', {
 		email
 	});
@@ -19,5 +19,3 @@ const REQUEST_PASSWORD_RESET_RESULT = object({
 	code: literal('Ok'),
 	message: literal('Password reset initiated')
 });
-
-export type RequestPasswordResetResult = Infer<typeof REQUEST_PASSWORD_RESET_RESULT>;

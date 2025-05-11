@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 import type { Coordinates } from '../globalTypes';
 import type { BoxModel, ExposureType, MQTT, Sensor, SensorTemplates, TTN } from './_boxModels';
 import { BOX_DATA_WITH_SECRETS } from './_boxModels';
@@ -13,7 +13,7 @@ export async function postNewBox(
 	location: Coordinates,
 	authorization: string,
 	options?: PostNewBoxOptions
-): Promise<PostNewBoxResult> {
+) {
 	const reponse = await axios.post(
 		'https://api.opensensemap.org/boxes',
 		Object.assign(
@@ -57,5 +57,3 @@ const POST_NEW_BOX_RESULT = object({
 	message: literal('Box successfully created'),
 	data: BOX_DATA_WITH_SECRETS
 });
-
-export type PostNewBoxResult = Infer<typeof POST_NEW_BOX_RESULT>;

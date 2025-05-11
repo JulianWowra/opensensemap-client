@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 import { USER_DATA } from './_userModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUser
  */
-export async function getUser(authorization: string): Promise<GetUserResult> {
+export async function getUser(authorization: string) {
 	const response = await axios.get('https://api.opensensemap.org/users/me', {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -24,5 +24,3 @@ const GET_USER_RESULT = object({
 		me: USER_DATA
 	})
 });
-
-export type GetUserResult = Infer<typeof GET_USER_RESULT>;

@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-deleteUser
  */
-export async function deleteUser(password: string, authorization: string): Promise<DeleteUserResult> {
+export async function deleteUser(password: string, authorization: string) {
 	const response = await axios.delete('https://api.opensensemap.org/users/me', {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -24,5 +24,3 @@ const DELETE_USER_RESULT = object({
 	code: literal('Ok'),
 	message: literal('User and all boxes of user marked for deletion. Bye Bye!')
 });
-
-export type DeleteUserResult = Infer<typeof DELETE_USER_RESULT>;

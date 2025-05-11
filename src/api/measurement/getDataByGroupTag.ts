@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { array, type Infer, mask, object, string } from 'superstruct';
+import { array, mask, object, string } from 'superstruct';
 import { DATE_RFC3339, OPENSENSEMAP_ID } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-getDataByGroupTag
  */
-export async function getDataByGroupTag(grouptag: string | string[]): Promise<GetDataByGroupTagResult> {
+export async function getDataByGroupTag(grouptag: string | string[]) {
 	try {
 		const response = await axios.get('https://api.opensensemap.org/boxes/data/bytag', {
 			params: {
@@ -38,5 +38,3 @@ const GET_DATA_BY_GROUP_TAG_RESULT = array(
 		createdAt: DATE_RFC3339
 	})
 );
-
-export type GetDataByGroupTagResult = Infer<typeof GET_DATA_BY_GROUP_TAG_RESULT>;

@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object, string } from 'superstruct';
+import { literal, mask, object, string } from 'superstruct';
 import { type Language, USER_DATA, type UserName } from './_userModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-register
  */
-export async function register(userName: UserName, email: string, password: string, options?: RegisterOptions): Promise<RegisterResult> {
+export async function register(userName: UserName, email: string, password: string, options?: RegisterOptions) {
 	const response = await axios.post(
 		'https://api.opensensemap.org/users/register',
 		Object.assign(
@@ -38,5 +38,3 @@ const REGISTER_RESULT = object({
 	token: string(),
 	refreshToken: string()
 });
-
-export type RegisterResult = Infer<typeof REGISTER_RESULT>;

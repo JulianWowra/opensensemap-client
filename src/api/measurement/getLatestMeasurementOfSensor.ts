@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Infer, mask, optional, string, union } from 'superstruct';
+import { mask, optional, string, union } from 'superstruct';
 import type { OpenSenseMapID } from '../globalTypes';
 import { LATEST_MEASUREMENT_SENSOR } from './_measurementModels';
 
@@ -10,7 +10,7 @@ export async function getLatestMeasurementOfSensor(
 	senseBoxId: OpenSenseMapID,
 	sensorId: OpenSenseMapID,
 	options?: GetLatestMeasurementOfSensorOptions
-): Promise<GetLatestMeasurementOfSensorResult> {
+) {
 	const response = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}/sensors/${sensorId}`, { params: options });
 	return mask(response.data, GET_LATEST_MEASUREMENT_OF_SENSOR_RESULT);
 }
@@ -24,4 +24,3 @@ export type GetLatestMeasurementOfSensorOptions = {
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L86
  */
 const GET_LATEST_MEASUREMENT_OF_SENSOR_RESULT = optional(union([LATEST_MEASUREMENT_SENSOR, string()]));
-export type GetLatestMeasurementOfSensorResult = Infer<typeof GET_LATEST_MEASUREMENT_OF_SENSOR_RESULT>;

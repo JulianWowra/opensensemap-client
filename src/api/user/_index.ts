@@ -2,7 +2,6 @@
 // https://docs.opensensemap.org/#api-Users
 //
 
-export * from './_userModels';
 export * from './confirmEmail';
 export * from './deleteUser';
 export * from './getUser';

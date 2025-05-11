@@ -1,11 +1,11 @@
 import axios from 'axios';
-import { array, type Infer, integer, literal, mask, object } from 'superstruct';
+import { array, integer, literal, mask, object } from 'superstruct';
 import { BOX_DATA_WITH_SECRETS } from '../box/_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUserBoxes
  */
-export async function getUserBoxes(authorization: string, options?: GetUserBoxesOptions): Promise<GetUserBoxesResult> {
+export async function getUserBoxes(authorization: string, options?: GetUserBoxesOptions) {
 	const response = await axios.get('https://api.opensensemap.org/users/me/boxes', {
 		params: options,
 		headers: {
@@ -31,5 +31,3 @@ const GET_USER_BOXES_RESULT = object({
 		sharedBoxes: array(BOX_DATA_WITH_SECRETS)
 	})
 });
-
-export type GetUserBoxesResult = Infer<typeof GET_USER_BOXES_RESULT>;

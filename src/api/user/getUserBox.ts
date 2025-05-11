@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object } from 'superstruct';
+import { literal, mask, object } from 'superstruct';
 import { BOX_DATA_WITH_SECRETS } from '../box/_boxModels';
 import type { OpenSenseMapID } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUserBox
  */
-export async function getUserBox(senseBoxId: OpenSenseMapID, authorization: string): Promise<GetUserBoxResult> {
+export async function getUserBox(senseBoxId: OpenSenseMapID, authorization: string) {
 	const response = await axios.get(`https://api.opensensemap.org/users/me/boxes/${senseBoxId}`, {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -25,5 +25,3 @@ const GET_USER_BOX_RESULT = object({
 		box: BOX_DATA_WITH_SECRETS
 	})
 });
-
-export type GetUserBoxResult = Infer<typeof GET_USER_BOX_RESULT>;

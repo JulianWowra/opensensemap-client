@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { type Infer, literal, mask, object, string } from 'superstruct';
+import { literal, mask, object, string } from 'superstruct';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-resend_email_confirmation
  */
-export async function resendEmailConfirmation(authorization: string): Promise<ResendEmailConfirmationResult> {
+export async function resendEmailConfirmation(authorization: string) {
 	const response = await axios.post('https://api.opensensemap.org/users/me/resend-email-confirmation', undefined, {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -21,5 +21,3 @@ const RESEND_EMAIL_CONFIRMATION_RESULT = object({
 	code: literal('Ok'),
 	message: string()
 });
-
-export type ResendEmailConfirmationResult = Infer<typeof RESEND_EMAIL_CONFIRMATION_RESULT>;

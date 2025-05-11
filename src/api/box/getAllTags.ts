@@ -1,10 +1,10 @@
 import axios from 'axios';
-import { array, type Infer, literal, mask, object, string } from 'superstruct';
+import { array, literal, mask, object, string } from 'superstruct';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getAllTags
  */
-export async function getAllTags(): Promise<GetAllTagsResult> {
+export async function getAllTags() {
 	const response = await axios.get(`https://api.opensensemap.org/tags`);
 	return mask(response.data, GET_ALL_TAGS_RESULT);
 }
@@ -16,5 +16,3 @@ const GET_ALL_TAGS_RESULT = object({
 	code: literal('Ok'),
 	data: array(string())
 });
-
-export type GetAllTagsResult = Infer<typeof GET_ALL_TAGS_RESULT>;

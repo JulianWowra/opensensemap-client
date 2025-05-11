@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { array, type Infer, mask } from 'superstruct';
+import { array, mask } from 'superstruct';
 import type { CoordinatesWGS84, DateRFC3339 } from '../globalTypes';
 import { BOX_DATA, type BoxModel, type ExposureType } from './_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBoxes
  */
-export async function getBoxes(bbox: CoordinatesWGS84, options?: GetBoxesOptions): Promise<GetBoxesResult> {
+export async function getBoxes(bbox: CoordinatesWGS84, options?: GetBoxesOptions) {
 	if (options?.date && options.date instanceof Date) {
 		options.date = options.date.toISOString();
 	}
@@ -48,4 +48,3 @@ export type GetBoxesOptions = {
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L253
  */
 const GET_BOXES_RESULT = array(BOX_DATA);
-export type GetBoxesResult = Infer<typeof GET_BOXES_RESULT>;

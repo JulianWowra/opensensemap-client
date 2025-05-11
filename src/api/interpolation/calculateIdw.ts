@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { array, type Infer, literal, mask, number, object, optional, string, union } from 'superstruct';
+import { array, literal, mask, number, object, optional, string, union } from 'superstruct';
 import type { ExposureType } from '../box/_boxModels';
 import { type CoordinatesWGS84, DATE_RFC3339, type DateRFC3339 } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Interpolation-calculateIdw
  */
-export async function calculateIdw(phenomenon: string, bbox: CoordinatesWGS84, options?: CalculateIdwOptions): Promise<CalculateIdwResult> {
+export async function calculateIdw(phenomenon: string, bbox: CoordinatesWGS84, options?: CalculateIdwOptions) {
 	if (options?.['from-date'] && options['from-date'] instanceof Date) {
 		options['from-date'] = options['from-date'].toISOString();
 	}
@@ -70,5 +70,3 @@ const CALCULATE_IDW_RESULT = union([
 		})
 	})
 ]);
-
-export type CalculateIdwResult = Infer<typeof CALCULATE_IDW_RESULT>;

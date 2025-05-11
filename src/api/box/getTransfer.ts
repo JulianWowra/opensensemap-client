@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { type Infer, mask, object } from 'superstruct';
+import { mask, object } from 'superstruct';
 import type { OpenSenseMapID } from '../globalTypes';
 import { BOX_TRANSFER_INFORMATION } from './_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getTransfer
  */
-export async function getTransfer(senseBoxId: OpenSenseMapID, authorization: string): Promise<GetTransferResult> {
+export async function getTransfer(senseBoxId: OpenSenseMapID, authorization: string) {
 	const response = await axios.get(`https://api.opensensemap.org/boxes/transfer/${senseBoxId}`, {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -22,5 +22,3 @@ export async function getTransfer(senseBoxId: OpenSenseMapID, authorization: str
 const GET_TRANSFER_RESULT = object({
 	data: BOX_TRANSFER_INFORMATION
 });
-
-export type GetTransferResult = Infer<typeof GET_TRANSFER_RESULT>;

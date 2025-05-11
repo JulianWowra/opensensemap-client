@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { type Infer, literal, mask } from 'superstruct';
+import { literal, mask } from 'superstruct';
 import type { DateRFC3339, OpenSenseMapID } from '../globalTypes';
 
 /**
@@ -11,7 +11,7 @@ export async function postNewMeasurement(
 	value: string | number,
 	boxAuthorization?: string,
 	options?: PostNewMeasurementOptions
-): Promise<PostNewMeasurementResult> {
+) {
 	if (options?.createdAt && options.createdAt instanceof Date) {
 		options.createdAt = options.createdAt.toISOString();
 	}
@@ -41,4 +41,3 @@ export type PostNewMeasurementOptions = {
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L315
  */
 const POST_NEW_MEASUREMENT_RESULT = literal('Measurement saved in box');
-export type PostNewMeasurementResult = Infer<typeof POST_NEW_MEASUREMENT_RESULT>;
