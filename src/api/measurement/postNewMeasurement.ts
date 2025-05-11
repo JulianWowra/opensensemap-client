@@ -1,5 +1,6 @@
 import axios from 'axios';
-import { OpenSenseMapID, RFC3339Date } from '../globalTypes';
+import { type Infer, literal, mask } from 'superstruct';
+import type { DateRFC3339, OpenSenseMapID } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Measurements-postNewMeasurement
@@ -15,28 +16,29 @@ export async function postNewMeasurement(
 		options.createdAt = options.createdAt.toISOString();
 	}
 
-	return (
-		await axios.post(
-			`https://api.opensensemap.org/boxes/${senseBoxId}/${sensorId}`,
-			Object.assign(
-				{
-					value: typeof value === 'string' ? value : value.toString()
-				},
-				options
-			),
+	const response = await axios.post(
+		`https://api.opensensemap.org/boxes/${senseBoxId}/${sensorId}`,
+		Object.assign(
 			{
-				headers: boxAuthorization ? { Authorization: boxAuthorization } : {}
-			}
-		)
-	).data;
+				value: typeof value === 'string' ? value : value.toString()
+			},
+			options
+		),
+		{
+			headers: boxAuthorization ? { Authorization: boxAuthorization } : {}
+		}
+	);
+
+	return mask(response.data, POST_NEW_MEASUREMENT_RESULT);
 }
 
 export type PostNewMeasurementOptions = {
-	createdAt?: RFC3339Date | Date;
+	createdAt?: DateRFC3339 | Date;
 	location?: Location;
 };
 
 /**
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L315
  */
-export type PostNewMeasurementResult = 'Measurement saved in box';
+const POST_NEW_MEASUREMENT_RESULT = literal('Measurement saved in box');
+export type PostNewMeasurementResult = Infer<typeof POST_NEW_MEASUREMENT_RESULT>;

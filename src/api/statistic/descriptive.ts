@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { Columns, Exposure } from '../box/_boxModels';
-import { OpenSenseMapID, RFC3339Date, WGS84Coordinates } from '../globalTypes';
-import { Operation } from './_statisticModels';
+import { array, type Infer, intersection, mask, number, object, optional, record, string } from 'superstruct';
+import { type Columns, COLUMNS, type ExposureType } from '../box/_boxModels';
+import { type CoordinatesWGS84, DATE_RFC3339, type DateRFC3339, OPENSENSEMAP_ID, type OpenSenseMapID } from '../globalTypes';
+import type { Operation } from './_statisticModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Statistics-descriptive
@@ -9,8 +10,8 @@ import { Operation } from './_statisticModels';
 export async function descriptive(
 	target: DescriptiveParamTarget,
 	phenomenon: string,
-	fromDate: RFC3339Date | Date,
-	toDate: RFC3339Date | Date,
+	fromDate: DateRFC3339 | Date,
+	toDate: DateRFC3339 | Date,
 	operation: Operation,
 	window: string,
 	options?: DescriptiveOptions
@@ -35,22 +36,22 @@ export async function descriptive(
 		options.exposure = options.exposure.join();
 	}
 
-	return (
-		await axios.get('https://api.opensensemap.org/statistics/descriptive', {
-			params: Object.assign(
-				{
-					phenomenon,
-					'from-date': fromDate,
-					'to-date': toDate,
-					operation,
-					window,
-					format: 'json'
-				},
-				target,
-				options
-			)
-		})
-	).data;
+	const response = await axios.get('https://api.opensensemap.org/statistics/descriptive', {
+		params: Object.assign(
+			{
+				phenomenon,
+				'from-date': fromDate,
+				'to-date': toDate,
+				operation,
+				window,
+				format: 'json'
+			},
+			target,
+			options
+		)
+	});
+
+	return mask(response.data, DESCRIPTIVE_RESULT);
 }
 
 export type DescriptiveParamTarget =
@@ -58,18 +59,25 @@ export type DescriptiveParamTarget =
 			boxId: OpenSenseMapID | OpenSenseMapID[];
 	  }
 	| {
-			bbox: WGS84Coordinates;
+			bbox: CoordinatesWGS84;
 	  };
 
 export type DescriptiveOptions = {
 	columns?: string | Columns[];
-	exposure?: string | Exposure[];
+	exposure?: string | ExposureType[];
 };
 
 /**
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L325
  */
-export type DescriptiveResult = {
-	sensorId: OpenSenseMapID;
-} & Record<Columns, string | undefined> &
-	Record<RFC3339Date, number>[];
+const DESCRIPTIVE_RESULT = array(
+	intersection([
+		object({
+			sensorId: OPENSENSEMAP_ID
+		}),
+		record(COLUMNS, optional(string())),
+		record(DATE_RFC3339, number())
+	])
+);
+
+export type DescriptiveResult = Infer<typeof DESCRIPTIVE_RESULT>;

@@ -1,21 +1,23 @@
 import axios from 'axios';
-import { OpenSenseMapID } from '../globalTypes';
-import { BoxData } from './_boxModels';
+import { type Infer, mask } from 'superstruct';
+import type { OpenSenseMapID } from '../globalTypes';
+import { BOX_DATA } from './_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-getBox
  */
 export async function getBox(senseBoxId: OpenSenseMapID): Promise<GetBoxResult> {
-	return (
-		await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
-			params: {
-				format: 'json'
-			}
-		})
-	).data;
+	const response = await axios.get(`https://api.opensensemap.org/boxes/${senseBoxId}`, {
+		params: {
+			format: 'json'
+		}
+	});
+
+	return mask(response.data, GET_BOX_RESULT);
 }
 
 /**
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L373
  */
-export type GetBoxResult = BoxData;
+const GET_BOX_RESULT = BOX_DATA;
+export type GetBoxResult = Infer<typeof GET_BOX_RESULT>;

@@ -1,18 +1,19 @@
 import axios from 'axios';
-import { BoxDataWithSecrets } from '../box/_boxModels';
+import { array, type Infer, integer, literal, mask, object } from 'superstruct';
+import { BOX_DATA_WITH_SECRETS } from '../box/_boxModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUserBoxes
  */
 export async function getUserBoxes(authorization: string, options?: GetUserBoxesOptions): Promise<GetUserBoxesResult> {
-	return (
-		await axios.get('https://api.opensensemap.org/users/me/boxes', {
-			params: options,
-			headers: {
-				Authorization: `Bearer ${authorization}`
-			}
-		})
-	).data;
+	const response = await axios.get('https://api.opensensemap.org/users/me/boxes', {
+		params: options,
+		headers: {
+			Authorization: `Bearer ${authorization}`
+		}
+	});
+
+	return mask(response.data, GET_USER_BOXES_RESULT);
 }
 
 export type GetUserBoxesOptions = {
@@ -22,11 +23,13 @@ export type GetUserBoxesOptions = {
 /**
  * @linkcode https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/api/lib/controllers/usersController.js#L259
  */
-export type GetUserBoxesResult = {
-	code: 'Ok';
-	data: {
-		boxes: BoxDataWithSecrets[];
-		boxes_count: number;
-		sharedBoxes: BoxDataWithSecrets[];
-	};
-};
+const GET_USER_BOXES_RESULT = object({
+	code: literal('Ok'),
+	data: object({
+		boxes: array(BOX_DATA_WITH_SECRETS),
+		boxes_count: integer(),
+		sharedBoxes: array(BOX_DATA_WITH_SECRETS)
+	})
+});
+
+export type GetUserBoxesResult = Infer<typeof GET_USER_BOXES_RESULT>;
