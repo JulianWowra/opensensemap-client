@@ -30,7 +30,7 @@ export type UpdateBoxOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L143
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L143|OpenSenseMap API code reference on GitHub}
  */
 const UPDATE_BOX_RESULT = object({
 	code: literal('Ok'),
@@ -39,7 +39,7 @@ const UPDATE_BOX_RESULT = object({
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateBox
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L855C6-L855C6
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L855C6-L855C6|OpenSenseMap API code reference on GitHub}
  */
 export type UpdateBoxSensorNew = Omit<Sensor, '_id'> & {
 	new: true;
@@ -47,7 +47,7 @@ export type UpdateBoxSensorNew = Omit<Sensor, '_id'> & {
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateBox
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L857C7-L857C7
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L857C7-L857C7|OpenSenseMap API code reference on GitHub}
  */
 export type UpdateBoxSensorEdited = Sensor & {
 	edited: true;
@@ -55,7 +55,7 @@ export type UpdateBoxSensorEdited = Sensor & {
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-updateBox
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L853
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L853|OpenSenseMap API code reference on GitHub}
  */
 export type UpdateBoxSensorDeleted = Pick<Sensor, '_id'> & {
 	deleted: true;

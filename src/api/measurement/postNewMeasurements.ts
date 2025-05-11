@@ -33,6 +33,6 @@ export type PostNewMeasurementsParamData = {
 }[];
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L425
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L425|OpenSenseMap API code reference on GitHub}
  */
 const POST_NEW_MEASUREMENTS_RESULT = literal('Measurements saved in box');

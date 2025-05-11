@@ -38,7 +38,7 @@ export type CalculateIdwOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L112C7-L112C7
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L112C7-L112C7|OpenSenseMap API code reference on GitHub}
  */
 const CALCULATE_IDW_RESULT = union([
 	object({

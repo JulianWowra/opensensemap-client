@@ -51,7 +51,7 @@ export type PostNewBoxOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L413
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L413|OpenSenseMap API code reference on GitHub}
  */
 const POST_NEW_BOX_RESULT = object({
 	message: literal('Box successfully created'),

@@ -5,6 +5,6 @@ export * from './api/misc/_index';
 export * from './api/statistic/_index';
 export * from './api/user/_index';
 
-export type { BoxModel, Columns, ExposureType, MQTT, Sensor, SensorTemplates, TTN } from './api/box/_boxModels';
-export type * from './api/globalTypes';
+export type { BoxModel, Columns, ExposureType, Sensor, SensorTemplates } from './api/box/_boxModels';
+export type { Coordinates, CoordinatesWGS84, DateRFC3339, OpenSenseMapID } from './api/globalTypes';
 export type { Language } from './api/user/_userModels';

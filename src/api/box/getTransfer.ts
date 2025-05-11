@@ -17,7 +17,7 @@ export async function getTransfer(senseBoxId: OpenSenseMapID, authorization: str
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L512C3-L512C3
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L512C3-L512C3|OpenSenseMap API code reference on GitHub}
  */
 const GET_TRANSFER_RESULT = object({
 	data: BOX_TRANSFER_INFORMATION

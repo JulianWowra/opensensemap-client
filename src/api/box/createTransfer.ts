@@ -24,7 +24,7 @@ export async function createTransfer(senseBoxId: OpenSenseMapID, expiresAt: Date
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L533C2-L533C3
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L533C2-L533C3|OpenSenseMap API code reference on GitHub}
  */
 const CREATE_TRANSFER_RESULT = object({
 	message: literal('Box successfully prepared for transfer'),

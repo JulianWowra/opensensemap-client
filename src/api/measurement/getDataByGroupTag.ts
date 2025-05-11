@@ -28,7 +28,7 @@ export async function getDataByGroupTag(grouptag: string | string[]) {
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L807
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L807|OpenSenseMap API code reference on GitHub}
  */
 const GET_DATA_BY_GROUP_TAG_RESULT = array(
 	object({

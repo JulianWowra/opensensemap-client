@@ -17,7 +17,7 @@ export async function getUserBox(senseBoxId: OpenSenseMapID, authorization: stri
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/api/lib/controllers/usersController.js#L281
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/api/lib/controllers/usersController.js#L281|OpenSenseMap API code reference on GitHub}
  */
 const GET_USER_BOX_RESULT = object({
 	code: literal('Ok'),

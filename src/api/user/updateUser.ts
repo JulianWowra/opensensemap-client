@@ -33,7 +33,7 @@ export type UpdateUserOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L303
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L303|OpenSenseMap API code reference on GitHub}
  */
 const UPDATE_USER_RESULT_UPDATED = object({
 	code: literal('Ok'),
@@ -48,7 +48,7 @@ const UPDATE_USER_RESULT_UPDATED = object({
 });
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/11695a33cf0260a62aecbefd76c46735b690be62/packages/api/lib/controllers/usersController.js#L320
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/11695a33cf0260a62aecbefd76c46735b690be62/packages/api/lib/controllers/usersController.js#L320|OpenSenseMap API code reference on GitHub}
  */
 const UPDATE_USER_RESULT_USER_NOT_UPDATED = object({
 	code: literal('Ok'),

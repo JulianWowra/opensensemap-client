@@ -10,7 +10,7 @@ export async function getAllTags() {
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/11695a33cf0260a62aecbefd76c46735b690be62/packages/api/lib/controllers/boxesController.js#L704C5-L704C5
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/11695a33cf0260a62aecbefd76c46735b690be62/packages/api/lib/controllers/boxesController.js#L704C5-L704C5|OpenSenseMap API code reference on GitHub}
  */
 const GET_ALL_TAGS_RESULT = object({
 	code: literal('Ok'),

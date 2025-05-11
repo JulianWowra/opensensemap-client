@@ -7,7 +7,7 @@ import { COORDINATES, DATE_RFC3339, OPENSENSEMAP_ID } from '../globalTypes';
 //
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L155C4-L155C4
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L155C4-L155C4|OpenSenseMap API code reference on GitHub}
  */
 export const LAST_MEASUREMENT = object({
 	value: string(),
@@ -17,7 +17,7 @@ export const LAST_MEASUREMENT = object({
 export type LastMeasurement = Infer<typeof LAST_MEASUREMENT>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/measurement/measurement.js#L8
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/measurement/measurement.js#L8|OpenSenseMap API code reference on GitHub}
  */
 export const MEASUREMENT = object({
 	_id: OPENSENSEMAP_ID,
@@ -32,9 +32,6 @@ export const MEASUREMENT = object({
 
 export type Measurement = Infer<typeof MEASUREMENT>;
 
-/**
- * @linkcode
- */
 export const LATEST_MEASUREMENT_SENSOR = intersection([
 	SENSOR,
 	object({

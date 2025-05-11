@@ -30,7 +30,7 @@ export type GetDataOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/measurement/measurement.js#L154C4-L154C4
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/measurement/measurement.js#L154C4-L154C4|OpenSenseMap API code reference on GitHub}
  */
 const GET_DATA_RESULT = array(
 	object({

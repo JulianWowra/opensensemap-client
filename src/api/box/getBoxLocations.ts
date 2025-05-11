@@ -28,6 +28,6 @@ export type GetBoxLocationsOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L173C3-L173C3
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L173C3-L173C3|OpenSenseMap API code reference on GitHub}
  */
 const GET_BOX_LOCATIONS_RESULT = array(BOX_LOCATION);

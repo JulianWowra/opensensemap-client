@@ -24,7 +24,7 @@ export async function updateTransfer(senseBoxId: OpenSenseMapID, transferToken: 
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L556C1-L556C2
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L556C1-L556C2|OpenSenseMap API code reference on GitHub}
  */
 const UPDATE_TRANSFER_RESULT = object({
 	message: literal('Transfer successfully updated'),

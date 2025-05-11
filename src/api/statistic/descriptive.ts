@@ -68,7 +68,7 @@ export type DescriptiveOptions = {
 };
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L325
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L325|OpenSenseMap API code reference on GitHub}
  */
 const DESCRIPTIVE_RESULT = array(
 	intersection([

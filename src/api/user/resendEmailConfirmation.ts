@@ -15,7 +15,7 @@ export async function resendEmailConfirmation(authorization: string) {
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L362
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L362|OpenSenseMap API code reference on GitHub}
  */
 const RESEND_EMAIL_CONFIRMATION_RESULT = object({
 	code: literal('Ok'),

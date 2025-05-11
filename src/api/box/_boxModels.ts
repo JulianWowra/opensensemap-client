@@ -17,20 +17,20 @@ import {
 import { COORDINATES, DATE_RFC3339, OPENSENSEMAP_ID } from '../globalTypes';
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L65
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L65|OpenSenseMap API code reference on GitHub}
  */
 export const EXPOSURE_TYPE = enums(['indoor', 'outdoor', 'mobile', 'unknown']);
 export type ExposureType = Infer<typeof EXPOSURE_TYPE>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L212
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L232C29-L232C37
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/measurementsController.js#L212|OpenSenseMap API code reference on GitHub}
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/statisticsController.js#L232C29-L232C37|OpenSenseMap API code reference on GitHub}
  */
 export const COLUMNS = enums(['boxId', 'boxName', 'exposure', 'height', 'lat', 'lon', 'phenomenon', 'sensorType', 'unit']);
 export type Columns = Infer<typeof COLUMNS>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L57
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L57|OpenSenseMap API code reference on GitHub}
  */
 export const BOX_LOCATION = object({
 	type: literal('Point'),
@@ -42,7 +42,7 @@ export type BoxLocation = Infer<typeof BOX_LOCATION>;
 
 /**
  * @deprecated Use `currentLocation`
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L170C56-L170C63
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L170C56-L170C63|OpenSenseMap API code reference on GitHub}
  */
 export const BOX_LOC = deprecated(
 	object({
@@ -57,7 +57,7 @@ export const BOX_LOC = deprecated(
 export type BoxLoc = Infer<typeof BOX_LOC>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/models/src/box/integrations.js#L8
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/models/src/box/integrations.js#L8|OpenSenseMap API code reference on GitHub}
  */
 export const MQTT = object({
 	enabled: boolean(),
@@ -71,7 +71,7 @@ export const MQTT = object({
 export type MQTT = Infer<typeof MQTT>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/models/src/box/integrations.js#L23
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/861dd9b2e9498b380b52839da84aa9ab27f1fc42/packages/models/src/box/integrations.js#L23|OpenSenseMap API code reference on GitHub}
  */
 export const TTN = object({
 	dev_id: string(),
@@ -84,7 +84,7 @@ export const TTN = object({
 export type TTN = Infer<typeof TTN>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/index.js#L34
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/index.js#L34|OpenSenseMap API code reference on GitHub}
  */
 export const BOX_MODEL = enums([
 	'homeV2Lora',
@@ -117,8 +117,8 @@ export const BOX_MODEL = enums([
 export type BoxModel = Infer<typeof BOX_MODEL>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/index.js#L66
- * @linkcode https://github.com/sensebox/openSenseMap-API/tree/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/sensorDefinitions
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/index.js#L66|OpenSenseMap API code reference on GitHub}
+ * @see {@link https://github.com/sensebox/openSenseMap-API/tree/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/sensorLayouts/sensorDefinitions|OpenSenseMap API code reference on GitHub}
  */
 export const SENSOR_TEMPLATES = enums([
 	'BME280',
@@ -148,7 +148,7 @@ export const SENSOR_TEMPLATES = enums([
 export type SensorTemplates = Infer<typeof SENSOR_TEMPLATES>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/sensor/sensor.js#L8
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/sensor/sensor.js#L8|OpenSenseMap API code reference on GitHub}
  */
 export const SENSOR = object({
 	_id: OPENSENSEMAP_ID,
@@ -161,7 +161,7 @@ export const SENSOR = object({
 export type Sensor = Infer<typeof SENSOR>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L47
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L47|OpenSenseMap API code reference on GitHub}
  */
 export const BOX_DATA = object({
 	_id: OPENSENSEMAP_ID,
@@ -183,7 +183,7 @@ export const BOX_DATA = object({
 export type BoxData = Infer<typeof BOX_DATA>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L172
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/models/src/box/box.js#L172|OpenSenseMap API code reference on GitHub}
  */
 export const BOX_DATA_WITH_SECRETS = intersection([
 	BOX_DATA,
@@ -200,7 +200,7 @@ export const BOX_DATA_WITH_SECRETS = intersection([
 export type BoxDataWithSecrets = Infer<typeof BOX_DATA_WITH_SECRETS>;
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/claim.js#L17
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/953c476b192bcb051823e67c2a3b3e9891eb7bea/packages/models/src/box/claim.js#L17|OpenSenseMap API code reference on GitHub}
  */
 export const BOX_TRANSFER_INFORMATION = object({
 	_id: OPENSENSEMAP_ID,
