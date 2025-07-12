@@ -3,7 +3,6 @@
 
 # Include specific directories and files
 !dist/**/*
-!src/**/*
 !LICENSE
 !package.json
 !README.md
