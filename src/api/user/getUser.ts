@@ -1,25 +1,26 @@
 import axios from 'axios';
-import { UserData } from './_userModels';
+import { literal, mask, object } from 'superstruct';
+import { USER_DATA } from './_userModels';
 
 /**
  * @see https://docs.opensensemap.org/#api-Users-getUser
  */
-export async function getUser(authorization: string): Promise<GetUserResult> {
-	return (
-		await axios.get('https://api.opensensemap.org/users/me', {
-			headers: {
-				Authorization: `Bearer ${authorization}`
-			}
-		})
-	).data;
+export async function getUser(authorization: string) {
+	const response = await axios.get('https://api.opensensemap.org/users/me', {
+		headers: {
+			Authorization: `Bearer ${authorization}`
+		}
+	});
+
+	return mask(response.data, GET_USER_RESULT);
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L274
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/usersController.js#L274|OpenSenseMap API code reference on GitHub}
  */
-export type GetUserResult = {
-	code: 'Ok';
-	data: {
-		me: UserData;
-	};
-};
+const GET_USER_RESULT = object({
+	code: literal('Ok'),
+	data: object({
+		me: USER_DATA
+	})
+});

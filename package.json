@@ -2,37 +2,56 @@
 	"name": "opensensemap-client",
 	"description": "The library allows and improves type-based working with the openSenseMap API",
 	"version": "1.7.0",
-	"main": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"repository": "https://github.com/KillerJulian/opensensemap-client",
-	"homepage": "https://killerjulian.github.io/opensensemap-client/",
-	"author": "KillerJulian <info@killerjulian.de>",
+	"main": "./dist/cjs/index.cjs",
+	"module": "./dist/esm/index.mjs",
+	"types": "./dist/types/index.d.ts",
+	"exports": {
+		".": {
+			"import": "./dist/esm/index.mjs",
+			"require": "./dist/cjs/index.cjs"
+		}
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/JulianWowra/opensensemap-client.git"
+	},
+	"homepage": "https://julianwowra.github.io/opensensemap-client/",
+	"author": "Julian Wowra <development@julianwowra.de>",
 	"license": "MIT",
+	"publishConfig": {
+		"provenance": true
+	},
+	"packageManager": "pnpm@10.13.1",
 	"dependencies": {
-		"axios": "^1.6.2",
-		"tslib": "^2.6.2"
+		"axios": "^1.9.0",
+		"superstruct": "^2.0.2"
 	},
 	"devDependencies": {
-		"@types/node": "^16.18.65",
-		"@typescript-eslint/eslint-plugin": "6.12.0",
-		"@typescript-eslint/parser": "6.12.0",
-		"eslint": "8.54.0",
-		"eslint-config-prettier": "9.0.0",
-		"prettier": "3.1.0",
-		"typescript": "^5.3.2",
-		"typedoc": "~0.25.3"
+		"@eslint/js": "9.31.0",
+		"eslint": "9.31.0",
+		"eslint-config-prettier": "10.1.5",
+		"prettier": "3.6.2",
+		"tsup": "^8.4.0",
+		"typedoc": "~0.28.4",
+		"typedoc-github-theme": "~0.3.0",
+		"typedoc-plugin-missing-exports": "^4.0.0",
+		"typescript": "5.8.3",
+		"typescript-eslint": "8.36.0"
 	},
 	"scripts": {
-		"build": "yarn build:lib && yarn build:docs",
-		"build:lib": "tsc",
-		"build:docs": "typedoc --entryPoints src/index.ts --out docs --excludePrivate --customCss ./typedoc.css",
-		"lint": "yarn lint:format && yarn lint:code",
+		"build": "pnpm run build:lib && pnpm build:docs",
+		"build:lib": "tsup",
+		"build:docs": "typedoc src --plugin typedoc-github-theme --plugin typedoc-plugin-missing-exports",
+		"dev": "tsup --watch",
+		"lint": "pnpm lint:format && pnpm lint:code",
 		"lint:format": "prettier --check .",
-		"lint:code": "eslint src --ext .ts",
-		"prepack": "yarn build:lib"
+		"lint:code": "eslint ."
 	},
-	"engines": {
-		"node": ">=16.0.0"
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"eslint"
+		]
 	},
 	"keywords": [
 		"opensensemap",

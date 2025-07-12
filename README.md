@@ -1,12 +1,20 @@
 # openSenseMap Client
 
-Based on API version: `v11.2.0`
+Based on API version: `v11.3.0`
 
 [![NPM](https://nodei.co/npm/opensensemap-client.png)](https://npmjs.org/package/opensensemap-client)
 
 ## Install
 
+```bash
+npm install opensensemap-client
 ```
+
+```bash
+pnpm install opensensemap-client
+```
+
+```bash
 yarn add opensensemap-client
 ```
 
@@ -42,95 +50,73 @@ start();
 
 ## Listed functions according to API documentation of openSenseMap
 
-- **Introduction**
-- **Boxes**
-  - [Get one senseBox](https://docs.opensensemap.org/#api-Boxes-getBox)
-    - _Function:_ [`getBox()`](https://killerjulian.github.io/opensensemap-client/functions/getBox.html)
-  - [Get all senseBoxes](https://docs.opensensemap.org/#api-Boxes-getBoxes)
-    - _Function:_ [`getBoxes()`](https://killerjulian.github.io/opensensemap-client/functions/getBoxes.html)
-  - [Post new senseBox](https://docs.opensensemap.org/#api-Boxes-postNewBox)
-    - _Function:_ [`postNewBox()`](https://killerjulian.github.io/opensensemap-client/functions/postNewBox.html)
-  - [Update a senseBox](https://docs.opensensemap.org/#api-Boxes-updateBox)
-    - _Function:_ [`updateBox()`](https://killerjulian.github.io/opensensemap-client/functions/updateBox.html)
-  - [Mark a senseBox and its measurements for deletion](https://docs.opensensemap.org/#api-Boxes-deleteBox)
-    - _Function:_ [`deleteBox()`](https://killerjulian.github.io/opensensemap-client/functions/deleteBox.html)
-  - [Claim a senseBox marked for transfer](https://docs.opensensemap.org/#api-Boxes-claimBox)
-    - _Function:_ [`claimBox()`](https://killerjulian.github.io/opensensemap-client/functions/claimBox.html)
-  - [Download the Arduino script for your senseBox](https://docs.opensensemap.org/#api-Boxes-getSketch)
-    - _Function:_ [`getSketch()`](https://killerjulian.github.io/opensensemap-client/functions/getSketch.html)
-  - [Get locations of a senseBox](https://docs.opensensemap.org/#api-Boxes-getBoxLocations)
-    - _Function:_ [`getBoxLocations()`](https://killerjulian.github.io/opensensemap-client/functions/getBoxLocations.html)
-  - [Get transfer information for a senseBox](https://docs.opensensemap.org/#api-Boxes-getTransfer)
-    - _Function:_ [`getTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/getTransfer.html)
-  - [Mark a senseBox for transferring to a different user](https://docs.opensensemap.org/#api-Boxes-createTransfer)
-    - _Function:_ [`createTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/createTransfer.html)
-  - [Revoke transfer token and remove senseBox from transfer](https://docs.opensensemap.org/#api-Boxes-removeTransfer)
-    - _Function:_ [`removeTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/removeTransfer.html)
-  - [Update a transfer token](https://docs.opensensemap.org/#api-Boxes-updateTransfer)
-    - _Function:_ [`updateTransfer()`](https://killerjulian.github.io/opensensemap-client/functions/updateTransfer.html)
-- **Interpolation**
-  - [Get a Inverse Distance Weighting Interpolation as FeatureCollection](https://docs.opensensemap.org/#api-Interpolation-calculateIdw)
-    - _Function:_ [`calculateIdw()`](https://killerjulian.github.io/opensensemap-client/functions/calculateIdw.html)
-- **Measurements**
-  - [Post new measurement](https://docs.opensensemap.org/#api-Measurements-postNewMeasurement)
-    - _Function:_ [`postNewMeasurement()`](https://killerjulian.github.io/opensensemap-client/functions/postNewMeasurement.html)
-  - [Get the 10000 latest measurements for a sensor](https://docs.opensensemap.org/#api-Measurements-getData)
-    - _Function:_ [`getData()`](https://killerjulian.github.io/opensensemap-client/functions/getData.html)
-  - [Delete measurements of a sensor](https://docs.opensensemap.org/#api-Measurements-deleteMeasurements)
-    - _Function:_ [`deleteMeasurements()`](https://killerjulian.github.io/opensensemap-client/functions/deleteMeasurements.html)
-  - [Get latest measurements for a grouptag as JSON](https://docs.opensensemap.org/#api-Measurements-getDataByGroupTag)
-    - _Function:_ [`getDataByGroupTag()`](https://killerjulian.github.io/opensensemap-client/functions/getDataByGroupTag.html)
-  - [Get latest measurements for a phenomenon as CSV](https://docs.opensensemap.org/#api-Measurements-getDataMulti)
-    - _Function:_ [`getDataMulti()`](https://killerjulian.github.io/opensensemap-client/functions/getDataMulti.html)
-  - [Get latest measurements of a senseBox](https://docs.opensensemap.org/#api-Measurements-getLatestMeasurements)
-    - _Function:_ [`getLatestMeasurements()`](https://killerjulian.github.io/opensensemap-client/functions/getLatestMeasurements.html)
-  - [Get latest measurements of a sensor](https://docs.opensensemap.org/#api-Measurements-getLatestMeasurementOfSensor)
-    - _Function:_ [`getLatestMeasurementOfSensor()`](https://killerjulian.github.io/opensensemap-client/functions/getLatestMeasurementOfSensor.html)
-  - [Post multiple new measurements](https://docs.opensensemap.org/#api-Measurements-postNewMeasurements)
-    - _Function:_ [`postNewMeasurements()`](https://killerjulian.github.io/opensensemap-client/functions/postNewMeasurements.html)
-- **Misc**
-  - [Get some statistics about the database](https://docs.opensensemap.org/#api-Misc-getStatistics)
-    - _Function:_ [`getStatistics()`](https://killerjulian.github.io/opensensemap-client/functions/getStatistics.html)
-  - [print all routes](https://docs.opensensemap.org/#api-Misc-printRoutes)
-    - _Function:_ [`printRoutes()`](https://killerjulian.github.io/opensensemap-client/functions/printRoutes.html)
-- **Statistics**
-  - [Compute basic descriptive statistics over specified time windows](https://docs.opensensemap.org/#api-Statistics-descriptive)
-    - _Function:_ [`descriptive()`](https://killerjulian.github.io/opensensemap-client/functions/descriptive.html)
-- **Users**
-  - [Register new](https://docs.opensensemap.org/#api-Users-register)
-    - _Function:_ [`register()`](https://killerjulian.github.io/opensensemap-client/functions/register.html)
-  - [Delete user, all of its boxes and all of its boxes measurements](https://docs.opensensemap.org/#api-Users-deleteUser)
-    - _Function:_ [`deleteUser()`](https://killerjulian.github.io/opensensemap-client/functions/deleteUser.html)
-  - [Get details](https://docs.opensensemap.org/#api-Users-getUser)
-    - _Function:_ [`getUser()`](https://killerjulian.github.io/opensensemap-client/functions/getUser.html)
-  - [Refresh Authorization](https://docs.opensensemap.org/#api-Users-refresh_auth)
-    - _Function:_ [`refreshAuth()`](https://killerjulian.github.io/opensensemap-client/functions/refreshAuth.html)
-  - [Sign in](https://docs.opensensemap.org/#api-Users-sign_in)
-    - _Function:_ [`signIn()`](https://killerjulian.github.io/opensensemap-client/functions/signIn.html)
-  - [Sign out](https://docs.opensensemap.org/#api-Users-sign_out)
-    - _Function:_ [`signOut()`](https://killerjulian.github.io/opensensemap-client/functions/signOut.html)
-  - [Update user details](https://docs.opensensemap.org/#api-Users-updateUser)
-    - _Function:_ [`updateUser()`](https://killerjulian.github.io/opensensemap-client/functions/updateUser.html)
-  - [confirm email address](https://docs.opensensemap.org/#api-Users-confirm_email)
-    - _Function:_ [`confirmEmail()`](https://killerjulian.github.io/opensensemap-client/functions/confirmEmail.html)
-  - [get specific box of the signed in user](https://docs.opensensemap.org/#api-Users-getUserBox)
-    - _Function:_ [`getUserBox()`](https://killerjulian.github.io/opensensemap-client/functions/getUserBox.html)
-  - [list all boxes and sharedBoxes of the signed in user](https://docs.opensensemap.org/#api-Users-getUserBoxes)
-    - _Function:_ [`getUserBoxes()`](https://killerjulian.github.io/opensensemap-client/functions/getUserBoxes.html)
-  - [request a resend of the email confirmation](https://docs.opensensemap.org/#api-Users-resend_email_confirmation)
-    - _Function:_ [`resendEmailConfirmation()`](https://killerjulian.github.io/opensensemap-client/functions/resendEmailConfirmation.html)
-  - [request password reset](https://docs.opensensemap.org/#api-Users-request_password_reset)
-    - _Function:_ [`requestPasswordReset()`](https://killerjulian.github.io/opensensemap-client/functions/requestPasswordReset.html)
-  - [reset password with passwordResetToken](https://docs.opensensemap.org/#api-Users-password_reset)
-    - _Function:_ [`passwordReset()`](https://killerjulian.github.io/opensensemap-client/functions/passwordReset.html)
+## API Functions Reference
 
-You can find more information in the [full documentation 📖](https://killerjulian.github.io/opensensemap-client/).
+### Boxes
+
+| Function                                                                                                | Description                          | OpenSenseMap API Documentation                                      |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------ | ------------------------------------------------------------------- |
+| [`getBox()`](https://julianwowra.github.io/opensensemap-client/functions/getBox.html)                   | Get one senseBox                     | [API Doc](https://docs.opensensemap.org/#api-Boxes-getBox)          |
+| [`getBoxes()`](https://julianwowra.github.io/opensensemap-client/functions/getBoxes.html)               | Get all senseBoxes                   | [API Doc](https://docs.opensensemap.org/#api-Boxes-getBoxes)        |
+| [`postNewBox()`](https://julianwowra.github.io/opensensemap-client/functions/postNewBox.html)           | Post new senseBox                    | [API Doc](https://docs.opensensemap.org/#api-Boxes-postNewBox)      |
+| [`updateBox()`](https://julianwowra.github.io/opensensemap-client/functions/updateBox.html)             | Update a senseBox                    | [API Doc](https://docs.opensensemap.org/#api-Boxes-updateBox)       |
+| [`deleteBox()`](https://julianwowra.github.io/opensensemap-client/functions/deleteBox.html)             | Mark a senseBox for deletion         | [API Doc](https://docs.opensensemap.org/#api-Boxes-deleteBox)       |
+| [`getAllTags()`](https://julianwowra.github.io/opensensemap-client/functions/getAllTags.html)           | Get all senseBox tags                | [API Doc](https://docs.opensensemap.org/#api-Boxes-getAllTags)      |
+| [`claimBox()`](https://julianwowra.github.io/opensensemap-client/functions/claimBox.html)               | Claim a senseBox marked for transfer | [API Doc](https://docs.opensensemap.org/#api-Boxes-claimBox)        |
+| [`getSketch()`](https://julianwowra.github.io/opensensemap-client/functions/getSketch.html)             | Download the Arduino script          | [API Doc](https://docs.opensensemap.org/#api-Boxes-getSketch)       |
+| [`getBoxLocations()`](https://julianwowra.github.io/opensensemap-client/functions/getBoxLocations.html) | Get locations of a senseBox          | [API Doc](https://docs.opensensemap.org/#api-Boxes-getBoxLocations) |
+| [`getTransfer()`](https://julianwowra.github.io/opensensemap-client/functions/getTransfer.html)         | Get transfer information             | [API Doc](https://docs.opensensemap.org/#api-Boxes-getTransfer)     |
+| [`createTransfer()`](https://julianwowra.github.io/opensensemap-client/functions/createTransfer.html)   | Mark a senseBox for transfer         | [API Doc](https://docs.opensensemap.org/#api-Boxes-createTransfer)  |
+| [`removeTransfer()`](https://julianwowra.github.io/opensensemap-client/functions/removeTransfer.html)   | Revoke transfer token                | [API Doc](https://docs.opensensemap.org/#api-Boxes-removeTransfer)  |
+| [`updateTransfer()`](https://julianwowra.github.io/opensensemap-client/functions/updateTransfer.html)   | Update a transfer token              | [API Doc](https://docs.opensensemap.org/#api-Boxes-updateTransfer)  |
+
+### Measurements
+
+| Function                                                                                                                          | Description                           | OpenSenseMap API Documentation                                                          |
+| --------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
+| [`postNewMeasurement()`](https://julianwowra.github.io/opensensemap-client/functions/postNewMeasurement.html)                     | Post new measurement                  | [API Doc](https://docs.opensensemap.org/#api-Measurements-postNewMeasurement)           |
+| [`getData()`](https://julianwowra.github.io/opensensemap-client/functions/getData.html)                                           | Get latest measurements for a sensor  | [API Doc](https://docs.opensensemap.org/#api-Measurements-getData)                      |
+| [`deleteMeasurements()`](https://julianwowra.github.io/opensensemap-client/functions/deleteMeasurements.html)                     | Delete measurements of a sensor       | [API Doc](https://docs.opensensemap.org/#api-Measurements-deleteMeasurements)           |
+| [`getDataByGroupTag()`](https://julianwowra.github.io/opensensemap-client/functions/getDataByGroupTag.html)                       | Get measurements for a grouptag       | [API Doc](https://docs.opensensemap.org/#api-Measurements-getDataByGroupTag)            |
+| [`getDataMulti()`](https://julianwowra.github.io/opensensemap-client/functions/getDataMulti.html)                                 | Get measurements for a phenomenon     | [API Doc](https://docs.opensensemap.org/#api-Measurements-getDataMulti)                 |
+| [`getLatestMeasurements()`](https://julianwowra.github.io/opensensemap-client/functions/getLatestMeasurements.html)               | Get latest measurements of a senseBox | [API Doc](https://docs.opensensemap.org/#api-Measurements-getLatestMeasurements)        |
+| [`getLatestMeasurementOfSensor()`](https://julianwowra.github.io/opensensemap-client/functions/getLatestMeasurementOfSensor.html) | Get latest measurements of a sensor   | [API Doc](https://docs.opensensemap.org/#api-Measurements-getLatestMeasurementOfSensor) |
+| [`postNewMeasurements()`](https://julianwowra.github.io/opensensemap-client/functions/postNewMeasurements.html)                   | Post multiple new measurements        | [API Doc](https://docs.opensensemap.org/#api-Measurements-postNewMeasurements)          |
+
+### Users
+
+| Function                                                                                                                | Description               | OpenSenseMap API Documentation                                                |
+| ----------------------------------------------------------------------------------------------------------------------- | ------------------------- | ----------------------------------------------------------------------------- |
+| [`register()`](https://julianwowra.github.io/opensensemap-client/functions/register.html)                               | Register new user         | [API Doc](https://docs.opensensemap.org/#api-Users-register)                  |
+| [`deleteUser()`](https://julianwowra.github.io/opensensemap-client/functions/deleteUser.html)                           | Delete user and all boxes | [API Doc](https://docs.opensensemap.org/#api-Users-deleteUser)                |
+| [`getUser()`](https://julianwowra.github.io/opensensemap-client/functions/getUser.html)                                 | Get user details          | [API Doc](https://docs.opensensemap.org/#api-Users-getUser)                   |
+| [`refreshAuth()`](https://julianwowra.github.io/opensensemap-client/functions/refreshAuth.html)                         | Refresh Authorization     | [API Doc](https://docs.opensensemap.org/#api-Users-refresh_auth)              |
+| [`signIn()`](https://julianwowra.github.io/opensensemap-client/functions/signIn.html)                                   | Sign in                   | [API Doc](https://docs.opensensemap.org/#api-Users-sign_in)                   |
+| [`signOut()`](https://julianwowra.github.io/opensensemap-client/functions/signOut.html)                                 | Sign out                  | [API Doc](https://docs.opensensemap.org/#api-Users-sign_out)                  |
+| [`updateUser()`](https://julianwowra.github.io/opensensemap-client/functions/updateUser.html)                           | Update user details       | [API Doc](https://docs.opensensemap.org/#api-Users-updateUser)                |
+| [`confirmEmail()`](https://julianwowra.github.io/opensensemap-client/functions/confirmEmail.html)                       | Confirm email address     | [API Doc](https://docs.opensensemap.org/#api-Users-confirm_email)             |
+| [`getUserBox()`](https://julianwowra.github.io/opensensemap-client/functions/getUserBox.html)                           | Get specific box of user  | [API Doc](https://docs.opensensemap.org/#api-Users-getUserBox)                |
+| [`getUserBoxes()`](https://julianwowra.github.io/opensensemap-client/functions/getUserBoxes.html)                       | List all boxes of user    | [API Doc](https://docs.opensensemap.org/#api-Users-getUserBoxes)              |
+| [`resendEmailConfirmation()`](https://julianwowra.github.io/opensensemap-client/functions/resendEmailConfirmation.html) | Resend email confirmation | [API Doc](https://docs.opensensemap.org/#api-Users-resend_email_confirmation) |
+| [`requestPasswordReset()`](https://julianwowra.github.io/opensensemap-client/functions/requestPasswordReset.html)       | Request password reset    | [API Doc](https://docs.opensensemap.org/#api-Users-request_password_reset)    |
+| [`passwordReset()`](https://julianwowra.github.io/opensensemap-client/functions/passwordReset.html)                     | Reset password            | [API Doc](https://docs.opensensemap.org/#api-Users-password_reset)            |
+
+### Other Functions
+
+| Function                                                                                            | Description                    | OpenSenseMap API Documentation                                           |
+| --------------------------------------------------------------------------------------------------- | ------------------------------ | ------------------------------------------------------------------------ |
+| [`calculateIdw()`](https://julianwowra.github.io/opensensemap-client/functions/calculateIdw.html)   | Get IDW Interpolation          | [API Doc](https://docs.opensensemap.org/#api-Interpolation-calculateIdw) |
+| [`getStatistics()`](https://julianwowra.github.io/opensensemap-client/functions/getStatistics.html) | Get database statistics        | [API Doc](https://docs.opensensemap.org/#api-Misc-getStatistics)         |
+| [`printRoutes()`](https://julianwowra.github.io/opensensemap-client/functions/printRoutes.html)     | Print all routes               | [API Doc](https://docs.opensensemap.org/#api-Misc-printRoutes)           |
+| [`descriptive()`](https://julianwowra.github.io/opensensemap-client/functions/descriptive.html)     | Compute descriptive statistics | [API Doc](https://docs.opensensemap.org/#api-Statistics-descriptive)     |
+
+You can find more information in the [full documentation 📖](https://julianwowra.github.io/opensensemap-client/).
 
 ## OpenSenseMap API documentation
 
 This library was created with a lot of work, reading the code from the [OpenSenseMap-API](https://github.com/sensebox/openSenseMap-API) by hand. In addition, this library provides an [Insomnia](https://insomnia.rest/) file for debugging purposes.
 
-**[📄 Insomnia file](https://github.com/KillerJulian/opensensemap-client/blob/master/insomnia.yml)**
+**[📄 Insomnia file](https://github.com/JulianWowra/opensensemap-client/blob/main/insomnia.yml)**
 
 Import this file into Insomnia, install the plugins [`customtimestamp`](https://insomnia.rest/plugins/insomnia-plugin-customtimestamp) and [`save-variables`](https://insomnia.rest/plugins/insomnia-plugin-save-variables) and configure the environments if you needed. You are ready!
 
@@ -138,10 +124,10 @@ Import this file into Insomnia, install the plugins [`customtimestamp`](https://
 
 ## Author
 
-👤 **KillerJulian <info@killerjulian.de>**
+👤 **Julian Wowra <development@julianwowra.de>**
 
-- Github: [@KillerJulian](https://github.com/KillerJulian)
+- Github: [@JulianWowra](https://github.com/JulianWowra)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/KillerJulian/opensensemap-client/issues). You can also take a look at the [contributing guide](https://github.com/KillerJulian/opensensemap-client/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/JulianWowra/opensensemap-client/issues). You can also take a look at the [contributing guide](https://github.com/JulianWowra/opensensemap-client/blob/main/CONTRIBUTING.md).

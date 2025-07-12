@@ -1,14 +1,11 @@
 import axios from 'axios';
-import { OpenSenseMapID } from '../globalTypes';
+import { mask, never } from 'superstruct';
+import type { OpenSenseMapID } from '../globalTypes';
 
 /**
  * @see https://docs.opensensemap.org/#api-Boxes-removeTransfer
  */
-export async function removeTransfer(
-	senseBoxId: OpenSenseMapID,
-	transferToken: string,
-	authorization: string
-): Promise<RemoveTransferResult> {
+export async function removeTransfer(senseBoxId: OpenSenseMapID, transferToken: string, authorization: string) {
 	const response = await axios.delete('https://api.opensensemap.org/boxes/transfer', {
 		headers: {
 			Authorization: `Bearer ${authorization}`
@@ -22,9 +19,11 @@ export async function removeTransfer(
 	if (response.status !== 204) {
 		throw new Error('Failed to remove transfer!');
 	}
+
+	return mask(response.data, REMOVE_TRANSFER_RESULT);
 }
 
 /**
- * @linkcode https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L578C3-L578C3
+ * @see {@link https://github.com/sensebox/openSenseMap-API/blob/2e645bdc4c80e668720b5eaaf384a35d2909569e/packages/api/lib/controllers/boxesController.js#L578C3-L578C3|OpenSenseMap API code reference on GitHub}
  */
-export type RemoveTransferResult = void;
+const REMOVE_TRANSFER_RESULT = never();
