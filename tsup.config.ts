@@ -15,7 +15,8 @@ const sharedConfig: Options = {
 	tsconfig: './tsconfig.json',
 	entry: ['src/index.ts'],
 	outDir: 'dist',
-	target: 'es2024',
+	target: 'es2022',
+	sourcemap: true,
 
 	clean: true,
 	minify: true,
