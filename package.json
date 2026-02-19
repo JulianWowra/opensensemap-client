@@ -1,7 +1,7 @@
 {
 	"name": "opensensemap-client",
 	"description": "The library allows and improves type-based working with the openSenseMap API",
-	"version": "1.8.1",
+	"version": "1.8.2",
 	"main": "./dist/cjs/index.cjs",
 	"module": "./dist/esm/index.mjs",
 	"types": "./dist/types/index.d.ts",
@@ -12,32 +12,26 @@
 			"types": "./dist/types/index.d.ts"
 		}
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/JulianWowra/opensensemap-client.git"
-	},
+	"repository": "https://github.com/JulianWowra/opensensemap-client.git",
 	"homepage": "https://julianwowra.github.io/opensensemap-client/",
 	"author": "Julian Wowra <development@julianwowra.de>",
 	"license": "MIT",
-	"publishConfig": {
-		"provenance": true
-	},
-	"packageManager": "pnpm@10.13.1",
+	"packageManager": "pnpm@10.30.0",
 	"dependencies": {
-		"axios": "^1.9.0",
+		"axios": "^1.13.5",
 		"superstruct": "^2.0.2"
 	},
 	"devDependencies": {
-		"@eslint/js": "9.31.0",
+		"@eslint/js": "9.39.2",
 		"eslint": "9.31.0",
-		"eslint-config-prettier": "10.1.5",
-		"prettier": "3.6.2",
-		"tsup": "^8.4.0",
-		"typedoc": "~0.28.4",
-		"typedoc-github-theme": "~0.3.0",
-		"typedoc-plugin-missing-exports": "^4.0.0",
-		"typescript": "5.8.3",
-		"typescript-eslint": "8.36.0"
+		"eslint-config-prettier": "10.1.8",
+		"prettier": "3.8.1",
+		"tsup": "^8.5.1",
+		"typedoc": "~0.28.17",
+		"typedoc-github-theme": "~0.4.0",
+		"typedoc-plugin-missing-exports": "^4.1.2",
+		"typescript": "5.9.3",
+		"typescript-eslint": "8.56.0"
 	},
 	"scripts": {
 		"build": "pnpm run build:lib && pnpm build:docs",
